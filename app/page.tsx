@@ -31,8 +31,8 @@ export default function Portfolio() {
 
     if (projectName === "RedFlagDeals Discord Bot" && url === "soon") {
       toast({
-        title: "Coming soon!",
-        description: "Work in progress",
+        title: "WIP",
+        description: "Still cooking a demo...",
         variant: "default",
       });
       return;
@@ -119,10 +119,10 @@ export default function Portfolio() {
               About Me
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
-              Hello! I'm Kien — a frontend developer with 5 years of experience
-              building modern, user-focused web applications. I specialize in
-              crafting responsive, accessible, and high-performance interfaces
-              that deliver seamless user experiences.
+              Hello! I'm Kien — a software developer with 5 years of experience
+              and a strong focus on frontend development. I specialize in
+              crafting responsive, accessible, and high-performance user
+              interfaces that deliver seamless web experiences.
             </p>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               After graduating from the University of Waterloo with a Bachelor
