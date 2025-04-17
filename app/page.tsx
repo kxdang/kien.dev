@@ -6,42 +6,54 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, ExternalLink, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
+  const { toast } = useToast();
+
+  const handleProjectClick = (projectName: string, url: string) => {
+    if (projectName === "RedFlagDeals Discord Bot" && url === "#") {
+      toast({
+        title: "Private Repository",
+        description: "The code for this project is currently private.",
+        variant: "default",
+      });
+      return;
+    }
+    window.open(url, "_blank");
+  };
 
   return (
     <div className="max-w-[1200px] mx-auto">
       <div className="flex flex-col lg:flex-row min-h-screen">
-        <div className="lg:w-1/3 p-4 lg:p-6 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col ">
-          <Card className="w-full shadow-lg transition-colors duration-300">
+        <div className="lg:w-1/3 p-4 lg:p-6 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col">
+          <Card className="w-full shadow-lg">
             <div className="flex justify-end p-4">
               <Button
                 variant="outline"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-full transition-all duration-300 hover:scale-110 hover:rotate-12"
+                className="rounded-full"
               >
                 {theme === "dark" ? (
-                  <Sun className="h-4 w-4 transition-transform duration-300" />
+                  <Sun className="h-4 w-4" />
                 ) : (
-                  <Moon className="h-4 w-4 transition-transform duration-300" />
+                  <Moon className="h-4 w-4" />
                 )}
               </Button>
             </div>
-            <CardContent className="p-6 flex flex-col items-center text-center transition-colors duration-300">
-              <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-slate-100 dark:border-slate-700 shadow-sm transition-colors duration-300">
+            <CardContent className="p-6 flex flex-col items-center text-center">
+              <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-slate-100 dark:border-slate-700 shadow-sm">
                 <Image
-                  src="/placeholder.svg?height=128&width=128"
+                  src="/kien.png"
                   alt="Profile"
                   fill
                   className="object-cover"
                   priority
                 />
               </div>
-              <h1 className="text-2xl font-bold mb-1 duration-300">
-                Kien Dang
-              </h1>
+              <h1 className="text-2xl font-bold mb-1">Kien Dang</h1>
               <h2 className="text-lg text-slate-600 dark:text-slate-300 mb-4">
                 Software Developer
               </h2>
@@ -55,7 +67,7 @@ export default function Portfolio() {
               <div className="flex gap-3 mb-6">
                 <Button variant="outline" size="icon" asChild>
                   <Link
-                    href="https://github.com"
+                    href="https://github.com/kxdang"
                     target="_blank"
                     aria-label="GitHub"
                   >
@@ -64,7 +76,7 @@ export default function Portfolio() {
                 </Button>
                 <Button variant="outline" size="icon" asChild>
                   <Link
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/kien-dang/"
                     target="_blank"
                     aria-label="LinkedIn"
                   >
@@ -94,8 +106,10 @@ export default function Portfolio() {
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               After graduating from the University of Waterloo with a Bachelor
               of Science in Biochemistry, I found myself working in a costing
-              role where I spent most of my time in Excel spreadsheets. While
-              the job wasn't related to my degree, it was there that I
+              role where I spent most of my time in Excel spreadsheets.
+            </p>
+            <p className="text-slate-600 mb-4 dark:text-slate-300">
+              While the job wasn't related to my degree, it was there that I
               discovered a passion for problem-solving through automation — I
               started using VBA to streamline repetitive tasks, and that
               experience ignited a deeper curiosity about programming.
@@ -111,27 +125,27 @@ export default function Portfolio() {
           <section id="skills" className="mb-12">
             <h2 className="text-2xl font-bold mb-4 border-b pb-2">Skills</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm transition-colors duration-300">
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                 <h3 className="font-medium mb-2">Frontend</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1 transition-colors duration-300">
+                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>React / Next.js</li>
                   <li>TypeScript / Zustand / Redux</li>
                   <li>GraphQL / Apollo </li>
                   <li>Tailwind CSS</li>
                 </ul>
               </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm transition-colors duration-300">
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                 <h3 className="font-medium mb-2">Tools</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1 transition-colors duration-300">
+                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>Git / GitHub</li>
                   <li>VS Code</li>
                   <li>Figma</li>
                   <li>Webpack / Vite</li>
                 </ul>
               </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm transition-colors duration-300">
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                 <h3 className="font-medium mb-2">Other</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1 transition-colors duration-300">
+                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>Responsive Design</li>
                   <li>Web Accessibility</li>
                   <li>CircleCI</li>
@@ -191,14 +205,16 @@ export default function Portfolio() {
                   description:
                     "My space to reflect on programming, track progress, and stay accountable with Pomodoro-fueled learning sessions.",
                   badges: ["React", "Next.js", "Tailwind"],
-                  codeUrl: "#",
-                  demoUrl: "#",
+                  imageUrl: "/blog.png",
+                  codeUrl: "https://github.com/kxdang/kiendang",
+                  demoUrl: "https://kiendang.me/",
                 },
                 {
-                  name: "Redflagdeals Discord Bot",
+                  name: "RedFlagDeals Discord Bot",
                   description:
                     "A private Discord bot that monitors RedFlagDeals and sends real-time alerts on savings and price errors.",
-                  badges: ["Node.js", "Discord.js", "MongoDB"],
+                  badges: ["Node.js", "Discord.js", "Upstash"],
+                  imageUrl: "/discord.png",
                   codeUrl: "#",
                   demoUrl: "#",
                 },
@@ -206,7 +222,10 @@ export default function Portfolio() {
                 <Card key={project.name} className="overflow-hidden">
                   <div className="relative h-48 w-full">
                     <Image
-                      src={`/placeholder.svg?height=192&width=384&text=Project+${project.name}`}
+                      src={
+                        project.imageUrl ??
+                        `/placeholder.svg?height=192&width=384&text=Project+${project.name}`
+                      }
                       alt={`Project ${project.name}`}
                       fill
                       className="object-cover"
@@ -229,22 +248,22 @@ export default function Portfolio() {
                         variant="outline"
                         size="sm"
                         className="flex items-center gap-1"
-                        asChild
+                        onClick={() =>
+                          handleProjectClick(project.name, project.codeUrl)
+                        }
                       >
-                        <Link href="#" target="_blank">
-                          <Github className="h-3.5 w-3.5" />
-                          <span>Code</span>
-                        </Link>
+                        <Github className="h-3.5 w-3.5" />
+                        <span>Code</span>
                       </Button>
                       <Button
                         size="sm"
                         className="flex items-center gap-1"
-                        asChild
+                        onClick={() =>
+                          handleProjectClick(project.name, project.demoUrl)
+                        }
                       >
-                        <Link href="#" target="_blank">
-                          <ExternalLink className="h-3.5 w-3.5" />
-                          <span>Explore</span>
-                        </Link>
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        <span>Explore</span>
                       </Button>
                     </div>
                   </CardContent>
@@ -269,7 +288,7 @@ export default function Portfolio() {
                 className="flex items-center gap-2"
                 asChild
               >
-                <Link href="https://linkedin.com" target="_blank">
+                <Link href="https://linkedin.com/in/kien-dang" target="_blank">
                   <Linkedin className="h-4 w-4" />
                   <span>LinkedIn</span>
                 </Link>
