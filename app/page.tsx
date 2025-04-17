@@ -12,6 +12,13 @@ export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
 
+  const handleDownloadResumeClick = () => {
+    toast({
+      title: "Coming soon!",
+      variant: "default",
+    });
+  };
+
   const handleProjectClick = (projectName: string, url: string) => {
     if (projectName === "RedFlagDeals Discord Bot" && url === "#") {
       toast({
@@ -89,7 +96,9 @@ export default function Portfolio() {
                   </Link>
                 </Button>
               </div>
-              <Button className="w-full">Download Resume</Button>
+              <Button className="w-full" onClick={handleDownloadResumeClick}>
+                Download Resume
+              </Button>
             </CardContent>
           </Card>
         </div>
@@ -165,12 +174,14 @@ export default function Portfolio() {
                   role: "Software Developer",
                   company: "theScore",
                   period: "2023 - Present",
+                  url: "https://thescore.bet/",
                   description:
                     "Driven by a focus on developer experience, performance, and frontend scalability, I've led initiatives that improved CI efficiency, test reliability, and application stability, while also mentoring developers, enhancing mobile usability, and building real-time observability with Datadog and Bugsnag",
                 },
                 {
                   role: "Software Developer",
                   company: "Coveo",
+                  url: "https://www.coveo.com/en",
                   period: "2020 - 2023",
                   description:
                     "Developed new trial experiences and contributed to platform tooling for Coveo's Admin-UI using React, TypeScript, and Redux, supporting frontend teams across the organization.",
@@ -184,7 +195,18 @@ export default function Portfolio() {
                     <div>
                       <h3 className="font-bold">{job.role}</h3>
                       <p className="text-slate-600 dark:text-slate-300">
-                        {job.company}
+                        {job.url ? (
+                          <a
+                            href={job.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {job.company}
+                          </a>
+                        ) : (
+                          job.company
+                        )}
                       </p>
                     </div>
                     <span className="text-sm text-slate-500">{job.period}</span>
