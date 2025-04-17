@@ -7,10 +7,103 @@ import { Github, Linkedin, Mail, ExternalLink, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useToast } from "@/components/ui/use-toast";
+import { useEffect, useRef, useState } from "react";
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const section = entry.target;
+
+            const heading = section.querySelector("h2");
+            if (heading instanceof HTMLElement) {
+              setTimeout(() => {
+                heading.style.transition =
+                  "opacity 0.4s ease, transform 0.4s ease";
+                heading.style.opacity = "1";
+                heading.style.transform = "translateY(0)";
+              }, 0);
+            }
+
+            const paragraphs = section.querySelectorAll("p");
+            paragraphs.forEach((p, i) => {
+              if (p instanceof HTMLElement) {
+                setTimeout(() => {
+                  p.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+                  p.style.opacity = "1";
+                  p.style.transform = "translateY(0)";
+                }, 100 + i * 100);
+              }
+            });
+
+            const cards = section.querySelectorAll(
+              ".bg-white, .card, .grid > div"
+            );
+            cards.forEach((card, i) => {
+              if (card instanceof HTMLElement) {
+                setTimeout(() => {
+                  card.style.transition =
+                    "opacity 0.4s ease, transform 0.4s ease";
+                  card.style.opacity = "1";
+                  card.style.transform = "translateY(0)";
+                }, 200 + i * 100);
+              }
+            });
+
+            const buttons = section.querySelectorAll("button");
+            buttons.forEach((button, i) => {
+              if (button instanceof HTMLElement) {
+                if (button.classList.contains("rounded-full")) return;
+
+                setTimeout(() => {
+                  button.style.transition =
+                    "opacity 0.3s ease, transform 0.3s ease";
+                  button.style.opacity = "1";
+                  button.style.transform = "translateY(0) scale(1)";
+                }, 300 + i * 50);
+              }
+            });
+
+            observer.unobserve(section);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = scrollContainer.querySelectorAll("section");
+    sections.forEach((section) => {
+      const elements = section.querySelectorAll(
+        "h2, p, .bg-white, .card, button:not(.rounded-full), .grid > div"
+      );
+      elements.forEach((el) => {
+        if (el instanceof HTMLElement) {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(20px)";
+        }
+      });
+
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, [isMounted]);
 
   const handleDownloadResumeClick = () => {
     toast({
@@ -45,7 +138,7 @@ export default function Portfolio() {
     <div className="max-w-[1200px] mx-auto">
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/3 p-4 lg:p-6 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col">
-          <Card className="w-full shadow-lg">
+          <Card className="w-full shadow-lg dark:bg-slate-800">
             <div className="flex justify-end p-4">
               <Button
                 variant="outline"
@@ -53,7 +146,7 @@ export default function Portfolio() {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="rounded-full"
               >
-                {theme === "dark" ? (
+                {isMounted && theme === "dark" ? (
                   <Sun className="h-4 w-4" />
                 ) : (
                   <Moon className="h-4 w-4" />
@@ -112,8 +205,8 @@ export default function Portfolio() {
             </CardContent>
           </Card>
         </div>
-        {/* Right side - Scrollable content */}
-        <div className="lg:w-2/3 p-4 lg:p-8">
+
+        <div ref={scrollContainerRef} className="lg:w-2/3 p-4 lg:p-8">
           <section id="about" className="mb-12">
             <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
               About Me
@@ -143,6 +236,7 @@ export default function Portfolio() {
               user-friendly applications.
             </p>
           </section>
+
           <section id="skills" className="mb-12">
             <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
               Skills
@@ -232,6 +326,7 @@ export default function Portfolio() {
               ))}
             </div>
           </section>
+
           <section id="projects" className="mb-12">
             <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
               Projects
@@ -257,7 +352,10 @@ export default function Portfolio() {
                   demoUrl: "soon",
                 },
               ].map((project) => (
-                <Card key={project.name} className="overflow-hidden">
+                <Card
+                  key={project.name}
+                  className="overflow-hidden dark:bg-slate-800"
+                >
                   <div className="relative h-48 w-full">
                     <Image
                       src={
@@ -309,6 +407,7 @@ export default function Portfolio() {
               ))}
             </div>
           </section>
+
           <section id="contact" className="mb-6">
             <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
               Contact
@@ -335,6 +434,7 @@ export default function Portfolio() {
               </Button>
             </div>
           </section>
+
           <footer className="text-center text-sm text-slate-500 pt-4 border-t">
             © {new Date().getFullYear()} Kien Dang. All rights reserved.
           </footer>
