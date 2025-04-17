@@ -28,6 +28,16 @@ export default function Portfolio() {
       });
       return;
     }
+
+    if (projectName === "RedFlagDeals Discord Bot" && url === "soon") {
+      toast({
+        title: "Coming soon!",
+        description: "Work in progress",
+        variant: "default",
+      });
+      return;
+    }
+
     window.open(url, "_blank");
   };
 
@@ -105,7 +115,9 @@ export default function Portfolio() {
         {/* Right side - Scrollable content */}
         <div className="lg:w-2/3 p-4 lg:p-8">
           <section id="about" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b pb-2">About Me</h2>
+            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+              About Me
+            </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               Hello! I'm Kien — a frontend developer with 5 years of experience
               building modern, user-focused web applications. I specialize in
@@ -132,7 +144,9 @@ export default function Portfolio() {
             </p>
           </section>
           <section id="skills" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b pb-2">Skills</h2>
+            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+              Skills
+            </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                 <h3 className="font-medium mb-2">Frontend</h3>
@@ -165,7 +179,7 @@ export default function Portfolio() {
           </section>
 
           <section id="experience" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b pb-2">
+            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
               Experience
             </h2>
             <div className="space-y-6">
@@ -219,7 +233,9 @@ export default function Portfolio() {
             </div>
           </section>
           <section id="projects" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b pb-2">Projects</h2>
+            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+              Projects
+            </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
@@ -238,7 +254,7 @@ export default function Portfolio() {
                   badges: ["Node.js", "Discord.js", "Upstash"],
                   imageUrl: "/discord.png",
                   codeUrl: "#",
-                  demoUrl: "#",
+                  demoUrl: "soon",
                 },
               ].map((project) => (
                 <Card key={project.name} className="overflow-hidden">
@@ -294,7 +310,9 @@ export default function Portfolio() {
             </div>
           </section>
           <section id="contact" className="mb-6">
-            <h2 className="text-2xl font-bold mb-4 border-b pb-2">Contact</h2>
+            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+              Contact
+            </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               If you'd like to have a coffee chat ☕ — feel free to reach out!
             </p>
