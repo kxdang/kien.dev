@@ -8,12 +8,21 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useToast } from "@/components/ui/use-toast";
 import { useEffect, useRef, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -123,11 +132,7 @@ export default function Portfolio() {
     }
 
     if (projectName === "RedFlagDeals Discord Bot" && url === "soon") {
-      toast({
-        title: "WIP",
-        description: "Still cooking a demo...",
-        variant: "default",
-      });
+      setIsModalOpen(true);
       return;
     }
 
@@ -374,9 +379,7 @@ export default function Portfolio() {
                     </p>
                     <div className="flex gap-2 mb-3 flex-wrap">
                       {project.badges.map((badge) => (
-                        <Badge key={badge} variant="outline">
-                          {badge}
-                        </Badge>
+                        <Badge key={badge}>{badge}</Badge>
                       ))}
                     </div>
                     <div className="flex gap-2">
@@ -430,6 +433,70 @@ export default function Portfolio() {
             <Link href={"https://kiendang.ca"}>Kien Dang.</Link> All rights
             reserved.
           </footer>
+          <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+            <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto ">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-bold flex items-center justify-between">
+                  <span>RedFlagDeals Bot Demo</span>
+                </DialogTitle>
+                <DialogDescription className="text-sm text-slate-600 dark:text-slate-400">
+                  A showcase of my bot constantly scanning every few seconds and
+                  alerting me when its found a deal.
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="relative w-full mb-4 rounded-md overflow-hidden">
+                <video
+                  src="/rfd.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  controls // Optional if you want play/pause controls
+                  className="object-cover w-full h-auto"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-medium mb-2">Project Overview</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    I built this to avoid endless RFD scrolling and impulse
+                    buying. My Discord bot runs on my home server using Node.js
+                    and pm2, stores keywords with Upstash, and sends alerts only
+                    for deals I actually care about.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-medium mb-2 ">Key Features</h3>
+                  <ul className="text-sm  text-slate-600 dark:text-slate-400 space-y-1 list-disc pl-5">
+                    <li>Real-time keyword storage with Upstash</li>
+                    <li>Instant deal alerts via user pings</li>
+                    <li>Scans RFD every 30 seconds</li>
+                    <li>Built with DiscordJS and custom bot commands</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-medium mb-2">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge>JavaScript</Badge>
+                    <Badge>Discord.js</Badge>
+                    <Badge>Upstash</Badge>
+                    <Badge>Node.js</Badge>
+                  </div>
+                </div>
+              </div>
+              <DialogFooter>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {" "}
+                  This private bot was built for personal use with friends. The
+                  code isn’t public to protect API keys and avoid potential
+                  misuses.
+                </p>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
