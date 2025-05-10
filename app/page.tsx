@@ -490,8 +490,8 @@ export default function Portfolio() {
               <DialogFooter>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
                   {" "}
-                  This private bot was built for personal use with friends. The
-                  code isn’t public to protect API keys and avoid potential
+                  This private bot was built for personal use and for friends.
+                  The code isn’t public to protect API keys and avoid potential
                   misuses.
                 </p>
               </DialogFooter>
