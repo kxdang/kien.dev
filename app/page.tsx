@@ -168,7 +168,7 @@ export default function Portfolio() {
                 Software Developer
               </h2>
               <div className="flex gap-2 mb-6 flex-wrap justify-center">
-                Toronto, Canada
+                Toronto, Canada 🇨🇦
               </div>
               <p className="text-slate-600 mb-6 dark:text-slate-400 ">
                 I build beautiful, responsive web applications with modern
@@ -422,21 +422,13 @@ export default function Portfolio() {
                   <span>hello@kien.dev</span>
                 </Link>
               </Button>
-              <Button
-                variant="outline"
-                className="flex items-center gap-2"
-                asChild
-              >
-                <Link href="https://linkedin.com/in/kien-dang" target="_blank">
-                  <Linkedin className="h-4 w-4" />
-                  <span>LinkedIn</span>
-                </Link>
-              </Button>
             </div>
           </section>
 
           <footer className="text-center text-sm text-slate-500 pt-4 border-t">
-            © {new Date().getFullYear()} Kien Dang. All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <Link href={"https://kiendang.ca"}>Kien Dang.</Link> All rights
+            reserved.
           </footer>
         </div>
       </div>
