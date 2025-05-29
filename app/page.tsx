@@ -356,6 +356,15 @@ export default function Portfolio() {
                   codeUrl: "#",
                   demoUrl: "soon",
                 },
+                {
+                  name: "Canadian Recalls",
+                  description:
+                    "A website that provides Canadians a better UX experience when checking for product recalls.",
+                  badges: ["React", "Next.js", "Tailwind"],
+                  imageUrl: "/recalls.png",
+                  codeUrl: "https://kiendang.me/blog/building-canadian-recalls",
+                  demoUrl: "https://canadianrecalls.ca",
+                },
               ].map((project) => (
                 <Card
                   key={project.name}
@@ -391,8 +400,17 @@ export default function Portfolio() {
                           handleProjectClick(project.name, project.codeUrl)
                         }
                       >
-                        <Github className="h-3.5 w-3.5" />
-                        <span>Code</span>
+                        {project.name === "Canadian Recalls" ? (
+                          <>
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            <span>Blog</span>
+                          </>
+                        ) : (
+                          <>
+                            <Github className="h-3.5 w-3.5" />
+                            <span>Code</span>
+                          </>
+                        )}
                       </Button>
                       <Button
                         size="sm"
