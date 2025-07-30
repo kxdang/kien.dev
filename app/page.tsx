@@ -17,6 +17,12 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 
+const getYearsOfExperience = () => {
+  const startYear = 2019;
+  const currentYear = new Date().getFullYear();
+  return currentYear - startYear;
+};
+
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
@@ -217,10 +223,11 @@ export default function Portfolio() {
               About Me
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
-              Hello! I'm Kien — a software developer with 5 years of experience
-              and a strong focus on frontend development. I specialize in
-              crafting responsive, accessible, and high-performance user
-              interfaces that deliver seamless web experiences.
+              Hello! I'm Kien — a software developer with{" "}
+              {getYearsOfExperience()} years of experience and a strong focus on
+              frontend development. I specialize in crafting responsive,
+              accessible, and high-performance user interfaces that deliver
+              seamless web experiences.
             </p>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               After graduating from the University of Waterloo with a Bachelor
@@ -268,10 +275,14 @@ export default function Portfolio() {
               <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
                 <h3 className="font-medium mb-2">Other</h3>
                 <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
-                  <li>Responsive Design</li>
-                  <li>Web Accessibility</li>
-                  <li>CircleCI</li>
-                  <li>Datadog / Bugsnag</li>
+                  <li>
+                    Platform Engineering, CI/CD, and Observability
+                    <br />
+                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                      (CircleCI, deployment pipelines, Datadog, Bugsnag)
+                    </span>
+                  </li>
+                  <li>Accessibility &amp; Responsive Web Design</li>
                 </ul>
               </div>
             </div>
@@ -354,7 +365,7 @@ export default function Portfolio() {
                   badges: ["Node.js", "Discord.js", "Upstash"],
                   imageUrl: "/discord.png",
                   codeUrl: "#",
-                  demoUrl: "soon",
+                  demoUrl: "rfd-demo", // Use a unique string to trigger modal
                 },
                 {
                   name: "Canadian Recalls",
@@ -365,67 +376,110 @@ export default function Portfolio() {
                   codeUrl: "https://kiendang.me/blog/building-canadian-recalls",
                   demoUrl: "https://canadianrecalls.ca",
                 },
-              ].map((project) => (
-                <Card
-                  key={project.name}
-                  className="overflow-hidden dark:bg-slate-800"
-                >
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={
-                        project.imageUrl ??
-                        `/placeholder.svg?height=192&width=384&text=Project+${project.name}`
-                      }
-                      alt={`Project ${project.name}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-bold text-lg mb-1">{project.name}</h3>
-                    <p className="text-sm text-slate-600 mb-3 dark:text-slate-400">
-                      {project.description}
-                    </p>
-                    <div className="flex gap-2 mb-3 flex-wrap">
-                      {project.badges.map((badge) => (
-                        <Badge key={badge}>{badge}</Badge>
-                      ))}
-                    </div>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="flex items-center gap-1"
-                        onClick={() =>
-                          handleProjectClick(project.name, project.codeUrl)
+                {
+                  name: "Freelancer / Contract Work",
+                  description:
+                    "Available weekends for local businesses and individuals needing a clean, modern website. No conflict with my full-time job.",
+                  badges: ["Consulting", "Small Business"],
+                  imageUrl: "/freelance.png",
+                  codeUrl: "#",
+                  demoUrl: "soon",
+                },
+              ]
+                // Hide the freelance project buttons since there's nothing to show
+                .map((project) => (
+                  <Card
+                    key={project.name}
+                    className="overflow-hidden dark:bg-slate-800"
+                  >
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={
+                          project.imageUrl ??
+                          `/placeholder.svg?height=192&width=384&text=Project+${project.name}`
                         }
-                      >
-                        {project.name === "Canadian Recalls" ? (
-                          <>
-                            <ExternalLink className="h-3.5 w-3.5" />
-                            <span>Blog</span>
-                          </>
-                        ) : (
-                          <>
-                            <Github className="h-3.5 w-3.5" />
-                            <span>Code</span>
-                          </>
+                        alt={`Project ${project.name}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardContent className="p-4">
+                      <h3 className="font-bold text-lg mb-1">{project.name}</h3>
+                      <p className="text-sm text-slate-600 mb-3 dark:text-slate-400">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-col gap-2">
+                        <div className="flex gap-2 mb-3 flex-wrap">
+                          {project.badges.map((badge) => (
+                            <Badge key={badge}>{badge}</Badge>
+                          ))}
+                        </div>
+                        {/* Hide the buttons for the Freelancer / Contract Work project */}
+                        {project.name !== "Freelancer / Contract Work" && (
+                          <div className="flex gap-2">
+                            {/* Show the code button for RFD, but make it show the private repo toast */}
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="flex items-center gap-1"
+                              onClick={() => {
+                                if (
+                                  project.name === "RedFlagDeals Discord Bot"
+                                ) {
+                                  // Show private repo toast
+                                  toast({
+                                    title: "Private Repository",
+                                    description:
+                                      "The code for this project is currently private.",
+                                    variant: "default",
+                                  });
+                                  return;
+                                }
+                                handleProjectClick(
+                                  project.name,
+                                  project.codeUrl
+                                );
+                              }}
+                            >
+                              {project.name === "Canadian Recalls" ? (
+                                <>
+                                  <ExternalLink className="h-3.5 w-3.5" />
+                                  <span>Blog</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Github className="h-3.5 w-3.5" />
+                                  <span>Code</span>
+                                </>
+                              )}
+                            </Button>
+                            <Button
+                              size="sm"
+                              className="flex items-center gap-1"
+                              onClick={() => {
+                                if (
+                                  project.name === "RedFlagDeals Discord Bot"
+                                ) {
+                                  // Open modal for demo
+                                  setIsModalOpen(true);
+                                  return;
+                                }
+                                handleProjectClick(
+                                  project.name,
+                                  project.demoUrl
+                                );
+                              }}
+                            >
+                              <ExternalLink className="h-3.5 w-3.5" />
+                              <span>{"Explore"}</span>
+                            </Button>
+                          </div>
                         )}
-                      </Button>
-                      <Button
-                        size="sm"
-                        className="flex items-center gap-1"
-                        onClick={() =>
-                          handleProjectClick(project.name, project.demoUrl)
-                        }
-                      >
-                        <ExternalLink className="h-3.5 w-3.5" />
-                        <span>Explore</span>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
             </div>
           </section>
 
@@ -434,16 +488,69 @@ export default function Portfolio() {
               Contact
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
-              If you'd like to have a coffee chat ☕ — feel free to reach out!
+              If you'd like to have a coffee chat ☕ — feel free to reach out
+              using the form below!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="flex items-center gap-2" asChild>
-                <Link href="mailto:hello@kien.dev">
-                  <Mail className="h-4 w-4" />
-                  <span>hello@kien.dev</span>
-                </Link>
+            <form
+              action="https://formspree.io/f/mzzvvzbl"
+              method="POST"
+              className="space-y-4 max-w-lg"
+            >
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-white dark:bg-slate-800 dark:border-slate-700 text-black dark:text-white"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-white dark:bg-slate-800 dark:border-slate-700 text-black dark:text-white"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-1"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md bg-white dark:bg-slate-800 dark:border-slate-700 text-black dark:text-white"
+                  placeholder="How can I help you?"
+                />
+              </div>
+              {/* Formspree honeypot field for spam prevention */}
+              <input type="text" name="_gotcha" style={{ display: "none" }} />
+              <Button type="submit" className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                <span>Send Message</span>
               </Button>
-            </div>
+            </form>
           </section>
 
           <footer className="text-center text-sm text-slate-500 pt-4 border-t">
