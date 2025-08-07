@@ -23,6 +23,15 @@ const getYearsOfExperience = () => {
   return currentYear - startYear;
 };
 
+// Helper: returns true if the company is Penn, theScore, or Coveo
+const needsWhiteBgLogo = (company: string) =>
+  company === "Penn Entertainment" ||
+  company === "theScore" ||
+  company === "Coveo";
+
+// Helper: returns true if the company is theScore
+const isTheScore = (company: string) => company === "theScore";
+
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
@@ -296,9 +305,21 @@ export default function Portfolio() {
               {[
                 {
                   role: "Software Developer",
+                  company: "Penn Entertainment",
+                  period: "2025 – Present",
+                  url: "https://www.pennentertainment.com/",
+                  logoUrl:
+                    "https://cdn.brandfetch.io/idVwEt7uTD/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1748340049391",
+                  description:
+                    "Transitioned to Penn Entertainment as part of theScore's migration under the Penn umbrella. Currently on the Sportsbook Experience team, contributing to ESPN BET's web platform. Focused on UI/UX enhancements, performance tuning, and feature delivery across espnbet.com.",
+                },
+                {
+                  role: "Software Developer",
                   company: "theScore",
-                  period: "2023 - Present",
+                  period: "2023 - 2025",
                   url: "https://thescore.bet/",
+                  logoUrl:
+                    "https://cdn.brandfetch.io/idL7aMtexJ/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1667569467815",
                   description:
                     "Driven by a focus on developer experience, performance, and frontend scalability, I've led initiatives that improved CI efficiency, test reliability, and application stability, while also mentoring developers, enhancing mobile usability, and building real-time observability with Datadog and Bugsnag",
                 },
@@ -307,39 +328,82 @@ export default function Portfolio() {
                   company: "Coveo",
                   url: "https://www.coveo.com/en",
                   period: "2020 - 2023",
+                  logoUrl:
+                    "https://cdn.brandfetch.io/idG9zVpOx6/w/1365/h/373/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1750793051429",
                   description:
                     "Developed new trial experiences and contributed to platform tooling for Coveo's Admin-UI using React, TypeScript, and Redux, supporting frontend teams across the organization.",
                 },
-              ].map((job, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm"
-                >
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                    <div>
-                      <h3 className="font-bold">{job.role}</h3>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {job.url ? (
-                          <a
-                            href={job.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:underline"
-                          >
-                            {job.company}
-                          </a>
-                        ) : (
-                          job.company
-                        )}
-                      </p>
+              ].map((job, index) => {
+                const hasLogo = !!job.logoUrl;
+                // Add a white background in dark mode for Penn, theScore, and Coveo logos
+                const logoWrapperClass = needsWhiteBgLogo(job.company)
+                  ? "inline-flex items-center justify-center rounded bg-transparent dark:bg-white"
+                  : "";
+                // Make theScore logo slightly smaller
+                const logoImgClass = isTheScore(job.company)
+                  ? `h-4 w-auto object-contain ${
+                      needsWhiteBgLogo(job.company) ? "p-0.5" : ""
+                    }`
+                  : `h-5 w-auto object-contain ${
+                      needsWhiteBgLogo(job.company) ? "p-0.5" : ""
+                    }`;
+                return (
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm"
+                  >
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                      <div>
+                        <h3 className="font-bold">{job.role}</h3>
+                        <p className="text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                          {hasLogo && job.url ? (
+                            <a
+                              href={job.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block"
+                              aria-label={job.company}
+                            >
+                              <span className={logoWrapperClass}>
+                                <img
+                                  src={job.logoUrl}
+                                  alt={`${job.company} logo`}
+                                  className={logoImgClass}
+                                />
+                              </span>
+                            </a>
+                          ) : hasLogo ? (
+                            <span className={logoWrapperClass}>
+                              <img
+                                src={job.logoUrl}
+                                alt={`${job.company} logo`}
+                                className={logoImgClass}
+                              />
+                            </span>
+                          ) : job.url ? (
+                            <a
+                              href={job.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:underline"
+                            >
+                              {job.company}
+                            </a>
+                          ) : (
+                            job.company
+                          )}
+                        </p>
+                      </div>
+                      <span className="text-sm text-slate-500">
+                        {job.period}
+                      </span>
                     </div>
-                    <span className="text-sm text-slate-500">{job.period}</span>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                      {job.description}
+                    </p>
                   </div>
-                  <p className="text-sm text-slate-600 dark:text-slate-300">
-                    {job.description}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
 
