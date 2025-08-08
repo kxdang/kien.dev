@@ -443,7 +443,7 @@ export default function Portfolio() {
                 {
                   name: "Freelancer / Contract Work",
                   description:
-                    "Available weekends for local businesses and individuals needing a clean, modern website. No conflict with my full-time job.",
+                    "Available weekends for freelance web work (React, CI/CD, platform). No conflict with full-time role.",
                   badges: ["Consulting", "Small Business"],
                   imageUrl: "/freelance.png",
                   codeUrl: "#",
