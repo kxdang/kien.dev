@@ -66,22 +66,22 @@ export default function Portfolio() {
 
             const heading = section.querySelector("h2");
             if (heading instanceof HTMLElement) {
-              setTimeout(() => {
+              requestAnimationFrame(() => {
                 heading.style.transition =
-                  "opacity 0.4s ease, transform 0.4s ease";
+                  "opacity 0.3s ease, transform 0.3s ease";
                 heading.style.opacity = "1";
                 heading.style.transform = "translateY(0)";
-              }, 0);
+              });
             }
 
             const paragraphs = section.querySelectorAll("p");
             paragraphs.forEach((p, i) => {
               if (p instanceof HTMLElement) {
                 setTimeout(() => {
-                  p.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+                  p.style.transition = "opacity 0.3s ease, transform 0.3s ease";
                   p.style.opacity = "1";
                   p.style.transform = "translateY(0)";
-                }, 100 + i * 100);
+                }, 50 + i * 50);
               }
             });
 
@@ -92,10 +92,10 @@ export default function Portfolio() {
               if (card instanceof HTMLElement) {
                 setTimeout(() => {
                   card.style.transition =
-                    "opacity 0.4s ease, transform 0.4s ease";
+                    "opacity 0.3s ease, transform 0.3s ease";
                   card.style.opacity = "1";
                   card.style.transform = "translateY(0)";
-                }, 200 + i * 100);
+                }, 100 + i * 50);
               }
             });
 
@@ -109,7 +109,7 @@ export default function Portfolio() {
                     "opacity 0.3s ease, transform 0.3s ease";
                   button.style.opacity = "1";
                   button.style.transform = "translateY(0) scale(1)";
-                }, 300 + i * 50);
+                }, 150 + i * 30);
               }
             });
 
@@ -122,16 +122,7 @@ export default function Portfolio() {
 
     const sections = scrollContainer.querySelectorAll("section");
     sections.forEach((section) => {
-      const elements = section.querySelectorAll(
-        "h2, p, .bg-white, .card, button:not(.rounded-full), .grid > div"
-      );
-      elements.forEach((el) => {
-        if (el instanceof HTMLElement) {
-          el.style.opacity = "0";
-          el.style.transform = "translateY(20px)";
-        }
-      });
-
+      // No need to set initial styles as CSS handles it
       observer.observe(section);
     });
 

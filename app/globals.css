@@ -113,3 +113,14 @@ body::before {
   opacity: 0.3;
   mix-blend-mode: color-dodge 
 }
+
+/* Hide animation elements initially to prevent flicker */
+section:not(.no-animate) h2,
+section:not(.no-animate) p,
+section:not(.no-animate) .bg-white,
+section:not(.no-animate) .card,
+section:not(.no-animate) button:not(.rounded-full),
+section:not(.no-animate) .grid > div {
+  opacity: 0;
+  transform: translateY(20px);
+}
