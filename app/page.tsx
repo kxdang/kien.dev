@@ -3,7 +3,15 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, Linkedin, Mail, ExternalLink, Moon, Sun } from "lucide-react";
+import { 
+  // @ts-ignore - Github icon is deprecated but still functional
+  Github, 
+  Linkedin, 
+  Mail, 
+  ExternalLink, 
+  Moon, 
+  Sun 
+} from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useToast } from "@/components/ui/use-toast";
@@ -38,6 +46,7 @@ export default function Portfolio() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFuelWiseModalOpen, setIsFuelWiseModalOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -441,20 +450,18 @@ export default function Portfolio() {
                   demoUrl: "https://canadianrecalls.ca",
                 },
                 {
-                  name: "Freelancer / Contract Work",
+                  name: "FuelWise",
                   description:
-                    "Available weekends for freelance web work (React, CI/CD, platform). No conflict with full-time role.",
-                  badges: ["Consulting", "Small Business"],
-                  imageUrl: "/freelance.png",
+                    "AI-powered web app that predicts tomorrow's gas prices in Ontario, helping drivers save money by timing their fill-ups.",
+                  badges: ["Next.js", "PostgreSQL", "Redis", "AI/ML"],
+                  imageUrl: "/fuelwise.png",
                   codeUrl: "#",
-                  demoUrl: "soon",
+                  demoUrl: "https://fuelwise.app",
                 },
-              ]
-                // Hide the freelance project buttons since there's nothing to show
-                .map((project) => (
+              ].map((project) => (
                   <Card
                     key={project.name}
-                    className="overflow-hidden dark:bg-slate-800"
+                    className="overflow-hidden dark:bg-slate-800 flex flex-col h-full"
                   >
                     <div className="relative h-48 w-full">
                       <Image
@@ -467,20 +474,19 @@ export default function Portfolio() {
                         className="object-cover"
                       />
                     </div>
-                    <CardContent className="p-4">
+                    <CardContent className="p-4 flex flex-col flex-grow">
                       <h3 className="font-bold text-lg mb-1">{project.name}</h3>
                       <p className="text-sm text-slate-600 mb-3 dark:text-slate-400">
                         {project.description}
                       </p>
 
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 mt-auto">
                         <div className="flex gap-2 mb-3 flex-wrap">
                           {project.badges.map((badge) => (
                             <Badge key={badge}>{badge}</Badge>
                           ))}
                         </div>
-                        {/* Hide the buttons for the Freelancer / Contract Work project */}
-                        {project.name !== "Freelancer / Contract Work" && (
+                        {(
                           <div className="flex gap-2">
                             {/* Show the code button for RFD, but make it show the private repo toast */}
                             <Button
@@ -489,7 +495,8 @@ export default function Portfolio() {
                               className="flex items-center gap-1"
                               onClick={() => {
                                 if (
-                                  project.name === "RedFlagDeals Discord Bot"
+                                  project.name === "RedFlagDeals Discord Bot" ||
+                                  project.name === "FuelWise"
                                 ) {
                                   // Show private repo toast
                                   toast({
@@ -527,6 +534,11 @@ export default function Portfolio() {
                                 ) {
                                   // Open modal for demo
                                   setIsModalOpen(true);
+                                  return;
+                                }
+                                if (project.name === "FuelWise") {
+                                  // Open FuelWise modal for demo
+                                  setIsFuelWiseModalOpen(true);
                                   return;
                                 }
                                 handleProjectClick(
@@ -683,6 +695,78 @@ export default function Portfolio() {
                   The code isn’t public to protect API keys and avoid potential
                   misuses.
                 </p>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog open={isFuelWiseModalOpen} onOpenChange={setIsFuelWiseModalOpen}>
+            <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-bold flex items-center justify-between">
+                  <span>FuelWise Demo</span>
+                </DialogTitle>
+                <DialogDescription className="text-sm text-slate-600 dark:text-slate-400">
+                  AI-powered gas price predictions for Ontario drivers, saving money one fill-up at a time.
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="relative w-full mb-4 rounded-md overflow-hidden">
+                <Image
+                  src="/fuelwise.png"
+                  alt="FuelWise App Screenshot"
+                  width={700}
+                  height={400}
+                  className="object-cover w-full h-auto"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-medium mb-2">Project Overview</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    FuelWise uses machine learning to analyze historical gas price data and predict tomorrow's prices across Ontario. 
+                    The app helps drivers make informed decisions about when to fill up, potentially saving significant money over time.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-medium mb-2">Key Features</h3>
+                  <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1 list-disc pl-5">
+                    <li>AI-powered price predictions with machine learning models</li>
+                    <li>Real-time data storage and caching with Redis (Upstash)</li>
+                    <li>Historical price tracking with PostgreSQL database</li>
+                    <li>Location-based predictions for major Ontario cities</li>
+                    <li>Daily price trend analysis and alerts</li>
+                    <li>Mobile-responsive design for on-the-go checking</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-medium mb-2">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge>Next.js</Badge>
+                    <Badge>TypeScript</Badge>
+                    <Badge>PostgreSQL</Badge>
+                    <Badge>Redis (Upstash)</Badge>
+                    <Badge>AI/ML Models</Badge>
+                    <Badge>Tailwind CSS</Badge>
+                    <Badge>Vercel</Badge>
+                  </div>
+                </div>
+              </div>
+              <DialogFooter>
+                <div className="flex flex-col gap-2 w-full">
+                  <Button 
+                    className="w-full" 
+                    onClick={() => window.open('https://fuelwise.app', '_blank')}
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Visit FuelWise
+                  </Button>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 text-center">
+                    The code is private to protect API keys and proprietary prediction algorithms.
+                  </p>
+                </div>
               </DialogFooter>
             </DialogContent>
           </Dialog>
