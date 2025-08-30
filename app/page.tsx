@@ -47,9 +47,21 @@ export default function Portfolio() {
   const [isMounted, setIsMounted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFuelWiseModalOpen, setIsFuelWiseModalOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -68,9 +80,9 @@ export default function Portfolio() {
             if (heading instanceof HTMLElement) {
               requestAnimationFrame(() => {
                 heading.style.transition =
-                  "opacity 0.3s ease, transform 0.3s ease";
+                  "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
                 heading.style.opacity = "1";
-                heading.style.transform = "translateY(0)";
+                heading.style.transform = "translateY(0) scale(1)";
               });
             }
 
@@ -78,10 +90,10 @@ export default function Portfolio() {
             paragraphs.forEach((p, i) => {
               if (p instanceof HTMLElement) {
                 setTimeout(() => {
-                  p.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+                  p.style.transition = "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
                   p.style.opacity = "1";
                   p.style.transform = "translateY(0)";
-                }, 50 + i * 50);
+                }, 100 + i * 75);
               }
             });
 
@@ -92,10 +104,10 @@ export default function Portfolio() {
               if (card instanceof HTMLElement) {
                 setTimeout(() => {
                   card.style.transition =
-                    "opacity 0.3s ease, transform 0.3s ease";
+                    "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
                   card.style.opacity = "1";
-                  card.style.transform = "translateY(0)";
-                }, 100 + i * 50);
+                  card.style.transform = "translateY(0) scale(1)";
+                }, 150 + i * 100);
               }
             });
 
@@ -106,10 +118,10 @@ export default function Portfolio() {
 
                 setTimeout(() => {
                   button.style.transition =
-                    "opacity 0.3s ease, transform 0.3s ease";
+                    "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
                   button.style.opacity = "1";
                   button.style.transform = "translateY(0) scale(1)";
-                }, 150 + i * 30);
+                }, 200 + i * 50);
               }
             });
 
@@ -117,12 +129,24 @@ export default function Portfolio() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.05, rootMargin: "-50px" }
     );
 
     const sections = scrollContainer.querySelectorAll("section");
     sections.forEach((section) => {
-      // No need to set initial styles as CSS handles it
+      // Enhanced initial styles for elements
+      const heading = section.querySelector("h2");
+      if (heading instanceof HTMLElement) {
+        heading.style.transform = "translateY(30px) scale(0.95)";
+      }
+      
+      const cards = section.querySelectorAll(".bg-white, .card, .grid > div");
+      cards.forEach((card) => {
+        if (card instanceof HTMLElement) {
+          card.style.transform = "translateY(30px) scale(0.98)";
+        }
+      });
+      
       observer.observe(section);
     });
 
@@ -155,10 +179,18 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="max-w-[1200px] mx-auto relative">
+      {/* Progress bar */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-800 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-slate-700 to-blue-900 transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+      
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/3 p-4 lg:p-6 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col">
-          <Card className="w-full shadow-lg dark:bg-slate-800">
+          <Card className="w-full shadow-2xl dark:bg-slate-800 backdrop-blur-md bg-white/95 dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700">
             <div className="flex justify-end p-4">
               <Button
                 variant="outline"
@@ -174,16 +206,16 @@ export default function Portfolio() {
               </Button>
             </div>
             <CardContent className="p-6 flex flex-col items-center text-center">
-              <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-slate-100 dark:border-slate-700 shadow-sm">
+              <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-slate-200 dark:border-slate-600 shadow-xl group">
                 <Image
                   src="/kien.png"
                   alt="Profile"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
                   priority
                 />
               </div>
-              <h1 className="text-2xl font-bold mb-1">Kien Dang</h1>
+              <h1 className="text-3xl font-bold mb-1 bg-gradient-to-r from-slate-700 to-blue-800 dark:from-slate-300 dark:to-blue-400 bg-clip-text text-transparent">Kien Dang</h1>
               <h2 className="text-lg text-slate-600 dark:text-slate-300 mb-4">
                 Software Developer
               </h2>
@@ -195,7 +227,7 @@ export default function Portfolio() {
                 technologies.
               </p>
               <div className="flex gap-3 mb-6">
-                <Button variant="outline" size="icon" asChild>
+                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
                   <Link
                     href="https://github.com/kxdang"
                     target="_blank"
@@ -204,7 +236,7 @@ export default function Portfolio() {
                     <Github className="h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="icon" asChild>
+                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
                   <Link
                     href="https://www.linkedin.com/in/kien-dang/"
                     target="_blank"
@@ -213,13 +245,13 @@ export default function Portfolio() {
                     <Linkedin className="h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="icon" asChild>
+                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
                   <Link href="mailto:hello@kien.dev" aria-label="Email">
                     <Mail className="h-4 w-4" />
                   </Link>
                 </Button>
               </div>
-              <Button className="w-full" onClick={handleDownloadResumeClick}>
+              <Button className="w-full bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105" onClick={handleDownloadResumeClick}>
                 Download Resume
               </Button>
             </CardContent>
@@ -227,8 +259,8 @@ export default function Portfolio() {
         </div>
 
         <div ref={scrollContainerRef} className="lg:w-2/3 p-4 lg:p-8">
-          <section id="about" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <section id="about" className="mb-16">
+            <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               About Me
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
@@ -258,13 +290,13 @@ export default function Portfolio() {
             </p>
           </section>
 
-          <section id="skills" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <section id="skills" className="mb-16">
+            <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               Skills
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-                <h3 className="font-medium mb-2">Frontend</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-animation">
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
+                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Frontend</h3>
                 <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>React / Next.js</li>
                   <li>TypeScript / Zustand / Redux</li>
@@ -272,8 +304,8 @@ export default function Portfolio() {
                   <li>Tailwind CSS</li>
                 </ul>
               </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-                <h3 className="font-medium mb-2">Tools</h3>
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
+                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Tools</h3>
                 <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>Git / GitHub</li>
                   <li>VS Code</li>
@@ -281,8 +313,8 @@ export default function Portfolio() {
                   <li>Webpack / Vite</li>
                 </ul>
               </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-                <h3 className="font-medium mb-2">Other</h3>
+              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
+                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Other</h3>
                 <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
                   <li>
                     Platform Engineering, CI/CD, and Observability
@@ -297,8 +329,8 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <section id="experience" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <section id="experience" className="mb-16">
+            <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               Experience
             </h2>
             <div className="space-y-6">
@@ -350,7 +382,7 @@ export default function Portfolio() {
                 return (
                   <div
                     key={index}
-                    className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm"
+                    className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg card-hover border border-slate-200 dark:border-slate-700"
                   >
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                       <div>
@@ -407,8 +439,8 @@ export default function Portfolio() {
             </div>
           </section>
 
-          <section id="projects" className="mb-12">
-            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+          <section id="projects" className="mb-16">
+            <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               Projects
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -452,9 +484,9 @@ export default function Portfolio() {
               ].map((project) => (
                   <Card
                     key={project.name}
-                    className="overflow-hidden dark:bg-slate-800 flex flex-col h-full"
+                    className="overflow-hidden dark:bg-slate-800 flex flex-col h-full card-hover group border border-slate-200 dark:border-slate-700"
                   >
-                    <div className="relative h-48 w-full">
+                    <div className="relative h-48 w-full overflow-hidden">
                       <Image
                         src={
                           project.imageUrl ??
@@ -462,8 +494,9 @@ export default function Portfolio() {
                         }
                         alt={`Project ${project.name}`}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     <CardContent className="p-4 flex flex-col flex-grow">
                       <h3 className="font-bold text-lg mb-1">{project.name}</h3>
@@ -474,7 +507,7 @@ export default function Portfolio() {
                       <div className="flex flex-col gap-2 mt-auto">
                         <div className="flex gap-2 mb-3 flex-wrap">
                           {project.badges.map((badge) => (
-                            <Badge key={badge}>{badge}</Badge>
+                            <Badge key={badge} className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{badge}</Badge>
                           ))}
                         </div>
                         {(
@@ -483,7 +516,7 @@ export default function Portfolio() {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="flex items-center gap-1"
+                              className="flex items-center gap-1 hover:border-slate-600 hover:text-slate-700 dark:hover:border-slate-400 dark:hover:text-slate-300 transition-colors"
                               onClick={() => {
                                 if (
                                   project.name === "RedFlagDeals Discord Bot" ||
@@ -518,7 +551,7 @@ export default function Portfolio() {
                             </Button>
                             <Button
                               size="sm"
-                              className="flex items-center gap-1"
+                              className="flex items-center gap-1 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all"
                               onClick={() => {
                                 if (
                                   project.name === "RedFlagDeals Discord Bot"
@@ -551,7 +584,7 @@ export default function Portfolio() {
           </section>
 
           <section id="contact" className="mb-6">
-            <h2 className="text-2xl font-bold mb-4 border-b border-slate-200 dark:border-slate-700 pb-2">
+            <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               Contact
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
@@ -613,7 +646,7 @@ export default function Portfolio() {
               </div>
               {/* Formspree honeypot field for spam prevention */}
               <input type="text" name="_gotcha" style={{ display: "none" }} />
-              <Button type="submit" className="flex items-center gap-2">
+              <Button type="submit" className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105">
                 <Mail className="h-4 w-4" />
                 <span>Send Message</span>
               </Button>
