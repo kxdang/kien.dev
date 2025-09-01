@@ -450,7 +450,7 @@ export default function Portfolio() {
                   description:
                     "My space to reflect on programming, track progress, and stay accountable with Pomodoro-fueled learning sessions.",
                   badges: ["React", "Next.js", "Tailwind"],
-                  imageUrl: "/blog.png",
+                  imageUrl: theme === "dark" ? "/blog-dark.png" : "/blog-white.png",
                   codeUrl: "https://github.com/kxdang/kiendang",
                   demoUrl: "https://kiendang.me/",
                 },
@@ -477,7 +477,7 @@ export default function Portfolio() {
                   description:
                     "AI-powered web app that predicts tomorrow's gas prices in Ontario, helping drivers save money by timing their fill-ups.",
                   badges: ["Next.js", "PostgreSQL", "Redis", "AI/ML"],
-                  imageUrl: "/fuelwise.png",
+                  imageUrl: theme === "dark" ? "/fuelwise-dark.png" : "/fuelwise-light.png",
                   codeUrl: "#",
                   demoUrl: "https://fuelwise.app",
                 },
@@ -736,7 +736,7 @@ export default function Portfolio() {
 
               <div className="relative w-full mb-4 rounded-md overflow-hidden">
                 <Image
-                  src="/fuelwise.png"
+                  src={theme === "dark" ? "/fuelwise-dark.png" : "/fuelwise-light.png"}
                   alt="FuelWise App Screenshot"
                   width={700}
                   height={400}
