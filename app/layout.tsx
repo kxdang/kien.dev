@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/next";
+import { PHProvider } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -142,11 +143,13 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-screen bg-slate-50 text-black dark:bg-slate-900 dark:text-white`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <Toaster />
-          <Analytics />
-        </ThemeProvider>
+        <PHProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+            <Toaster />
+            <Analytics />
+          </ThemeProvider>
+        </PHProvider>
       </body>
     </html>
   );
