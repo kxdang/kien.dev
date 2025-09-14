@@ -3,14 +3,14 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
+import {
   // @ts-ignore - Github icon is deprecated but still functional
-  Github, 
-  Linkedin, 
-  Mail, 
-  ExternalLink, 
-  Moon, 
-  Sun 
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Moon,
+  Sun,
 } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -55,13 +55,14 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -90,7 +91,8 @@ export default function Portfolio() {
             paragraphs.forEach((p, i) => {
               if (p instanceof HTMLElement) {
                 setTimeout(() => {
-                  p.style.transition = "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
+                  p.style.transition =
+                    "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
                   p.style.opacity = "1";
                   p.style.transform = "translateY(0)";
                 }, 100 + i * 75);
@@ -139,14 +141,14 @@ export default function Portfolio() {
       if (heading instanceof HTMLElement) {
         heading.style.transform = "translateY(30px) scale(0.95)";
       }
-      
+
       const cards = section.querySelectorAll(".bg-white, .card, .grid > div");
       cards.forEach((card) => {
         if (card instanceof HTMLElement) {
           card.style.transform = "translateY(30px) scale(0.98)";
         }
       });
-      
+
       observer.observe(section);
     });
 
@@ -181,13 +183,13 @@ export default function Portfolio() {
   return (
     <div className="max-w-[1200px] mx-auto relative">
       {/* Progress bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-800 z-50">
-        <div 
-          className="h-full bg-gradient-to-r from-slate-700 to-blue-900 transition-all duration-150"
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50">
+        <div
+          className="h-full bg-gradient-to-r from-slate-500 to-blue-500 dark:from-slate-400 dark:to-blue-400 transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
-      
+
       <div className="flex flex-col lg:flex-row min-h-screen">
         <div className="lg:w-1/3 p-4 lg:p-6 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col">
           <Card className="w-full shadow-2xl dark:bg-slate-800 backdrop-blur-md bg-white/95 dark:bg-slate-800/95 border border-slate-200 dark:border-slate-700">
@@ -215,7 +217,9 @@ export default function Portfolio() {
                   priority
                 />
               </div>
-              <h1 className="text-3xl font-bold mb-1 bg-gradient-to-r from-slate-700 to-blue-800 dark:from-slate-300 dark:to-blue-400 bg-clip-text text-transparent">Kien Dang</h1>
+              <h1 className="text-3xl font-bold mb-1 bg-gradient-to-r from-slate-700 to-blue-800 dark:from-slate-300 dark:to-blue-400 bg-clip-text text-transparent">
+                Kien Dang
+              </h1>
               <h2 className="text-lg text-slate-600 dark:text-slate-300 mb-4">
                 Software Developer
               </h2>
@@ -227,7 +231,12 @@ export default function Portfolio() {
                 technologies.
               </p>
               <div className="flex gap-3 mb-6">
-                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                >
                   <Link
                     href="https://github.com/kxdang"
                     target="_blank"
@@ -236,7 +245,12 @@ export default function Portfolio() {
                     <Github className="h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                >
                   <Link
                     href="https://www.linkedin.com/in/kien-dang/"
                     target="_blank"
@@ -245,13 +259,21 @@ export default function Portfolio() {
                     <Linkedin className="h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="icon" asChild className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  asChild
+                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                >
                   <Link href="mailto:hello@kien.dev" aria-label="Email">
                     <Mail className="h-4 w-4" />
                   </Link>
                 </Button>
               </div>
-              <Button className="w-full bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105" onClick={handleDownloadResumeClick}>
+              <Button
+                className="w-full bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105"
+                onClick={handleDownloadResumeClick}
+              >
                 Download Resume
               </Button>
             </CardContent>
@@ -294,37 +316,131 @@ export default function Portfolio() {
             <h2 className="text-3xl font-bold mb-6 border-b-2 border-slate-300 dark:border-slate-700 pb-3 text-slate-800 dark:text-slate-100">
               Skills
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 stagger-animation">
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Frontend</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
-                  <li>React / Next.js</li>
-                  <li>TypeScript / Zustand / Redux</li>
-                  <li>GraphQL / Apollo </li>
-                  <li>Tailwind CSS</li>
-                </ul>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Frontend Development Card */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Frontend Development</h3>
+                </div>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  Building responsive, accessible, and performant user interfaces
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Core Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", bgColor: "bg-cyan-100 dark:bg-cyan-900/30" },
+                        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", bgColor: "bg-gray-100 dark:bg-gray-800", invertDark: true },
+                        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", bgColor: "bg-yellow-100 dark:bg-yellow-900/30" },
+                        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", bgColor: "bg-green-100 dark:bg-green-900/30" },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className={`w-4 h-4 ${skill.invertDark && theme === 'dark' ? 'invert' : ''}`} />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Libraries & Styling</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "Redux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                        { name: "Zustand", logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='70'%3E🐻%3C/text%3E%3C/svg%3E", bgColor: "bg-amber-100 dark:bg-amber-900/30" },
+                        { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg", bgColor: "bg-pink-100 dark:bg-pink-900/30" },
+                        { name: "Tailwind", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
+                        { name: "Apollo", logo: "https://www.vectorlogo.zone/logos/apollographql/apollographql-icon.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Design & Tools</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                        { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Tools</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
-                  <li>Git / GitHub</li>
-                  <li>VS Code</li>
-                  <li>Figma</li>
-                  <li>Webpack / Vite</li>
-                </ul>
-              </div>
-              <div className="p-4 bg-white dark:bg-slate-800 rounded-lg shadow-lg card-hover skill-card border border-slate-200 dark:border-slate-700">
-                <h3 className="font-semibold mb-2 text-slate-700 dark:text-slate-300">Other</h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-300 space-y-1">
-                  <li>
-                    Platform Engineering, CI/CD, and Observability
-                    <br />
-                    <span className="text-xs text-slate-500 dark:text-slate-400">
-                      (CircleCI, deployment pipelines, Datadog, Bugsnag)
-                    </span>
-                  </li>
-                  <li>Accessibility &amp; Responsive Web Design</li>
-                </ul>
+
+              {/* Platform Engineering Card */}
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Platform Engineering</h3>
+                </div>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                  Building tools, improving DX, and ensuring system reliability
+                </p>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">CI/CD & Build Tools</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "CircleCI", logo: "https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg", bgColor: "bg-gray-100 dark:bg-gray-900/30" },
+                        { name: "Webpack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg", bgColor: "bg-sky-100 dark:bg-sky-900/30" },
+                        { name: "Vite", logo: "https://vitejs.dev/logo.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Monitoring & Analytics</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "Datadog", logo: "https://www.vectorlogo.zone/logos/datadoghq/datadoghq-icon.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                        { name: "Bugsnag", logo: "https://www.vectorlogo.zone/logos/bugsnag/bugsnag-icon.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                        { name: "PostHog", logo: "https://posthog.com/brand/posthog-logomark.svg", bgColor: "bg-orange-100 dark:bg-orange-900/30" },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Version Control</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", bgColor: "bg-orange-100 dark:bg-orange-900/30" },
+                        { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", bgColor: "bg-gray-100 dark:bg-gray-800", invertDark: true },
+                      ].map((skill) => (
+                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
+                          <img src={skill.logo} alt={skill.name} className={`w-4 h-4 ${skill.invertDark && theme === 'dark' ? 'invert' : ''}`} />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -450,7 +566,8 @@ export default function Portfolio() {
                   description:
                     "My space to reflect on programming, track progress, and stay accountable with Pomodoro-fueled learning sessions.",
                   badges: ["React", "Next.js", "Tailwind"],
-                  imageUrl: theme === "dark" ? "/blog-dark.png" : "/blog-white.png",
+                  imageUrl:
+                    theme === "dark" ? "/blog-dark.png" : "/blog-white.png",
                   codeUrl: "https://github.com/kxdang/kiendang",
                   demoUrl: "https://kiendang.me/",
                 },
@@ -477,109 +594,109 @@ export default function Portfolio() {
                   description:
                     "AI-powered web app that predicts tomorrow's gas prices in Ontario, helping drivers save money by timing their fill-ups.",
                   badges: ["Next.js", "PostgreSQL", "Redis", "AI/ML"],
-                  imageUrl: theme === "dark" ? "/fuelwise-dark.png" : "/fuelwise-light.png",
+                  imageUrl:
+                    theme === "dark"
+                      ? "/fuelwise-dark.png"
+                      : "/fuelwise-light.png",
                   codeUrl: "#",
                   demoUrl: "https://fuelwise.app",
                 },
               ].map((project) => (
-                  <Card
-                    key={project.name}
-                    className="overflow-hidden dark:bg-slate-800 flex flex-col h-full card-hover group border border-slate-200 dark:border-slate-700"
-                  >
-                    <div className="relative h-48 w-full overflow-hidden">
-                      <Image
-                        src={
-                          project.imageUrl ??
-                          `/placeholder.svg?height=192&width=384&text=Project+${project.name}`
-                        }
-                        alt={`Project ${project.name}`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <CardContent className="p-4 flex flex-col flex-grow">
-                      <h3 className="font-bold text-lg mb-1">{project.name}</h3>
-                      <p className="text-sm text-slate-600 mb-3 dark:text-slate-400">
-                        {project.description}
-                      </p>
+                <Card
+                  key={project.name}
+                  className="overflow-hidden dark:bg-slate-800 flex flex-col h-full card-hover group border border-slate-200 dark:border-slate-700"
+                >
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                      src={
+                        project.imageUrl ??
+                        `/placeholder.svg?height=192&width=384&text=Project+${project.name}`
+                      }
+                      alt={`Project ${project.name}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <CardContent className="p-4 flex flex-col flex-grow">
+                    <h3 className="font-bold text-lg mb-1">{project.name}</h3>
+                    <p className="text-sm text-slate-600 mb-3 dark:text-slate-400">
+                      {project.description}
+                    </p>
 
-                      <div className="flex flex-col gap-2 mt-auto">
-                        <div className="flex gap-2 mb-3 flex-wrap">
-                          {project.badges.map((badge) => (
-                            <Badge key={badge} className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700">{badge}</Badge>
-                          ))}
-                        </div>
-                        {(
-                          <div className="flex gap-2">
-                            {/* Show the code button for RFD, but make it show the private repo toast */}
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="flex items-center gap-1 hover:border-slate-600 hover:text-slate-700 dark:hover:border-slate-400 dark:hover:text-slate-300 transition-colors"
-                              onClick={() => {
-                                if (
-                                  project.name === "RedFlagDeals Discord Bot" ||
-                                  project.name === "FuelWise"
-                                ) {
-                                  // Show private repo toast
-                                  toast({
-                                    title: "Private Repository",
-                                    description:
-                                      "The code for this project is currently private.",
-                                    variant: "default",
-                                  });
-                                  return;
-                                }
-                                handleProjectClick(
-                                  project.name,
-                                  project.codeUrl
-                                );
-                              }}
-                            >
-                              {project.name === "Canadian Recalls" ? (
-                                <>
-                                  <ExternalLink className="h-3.5 w-3.5" />
-                                  <span>Blog</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Github className="h-3.5 w-3.5" />
-                                  <span>Code</span>
-                                </>
-                              )}
-                            </Button>
-                            <Button
-                              size="sm"
-                              className="flex items-center gap-1 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all"
-                              onClick={() => {
-                                if (
-                                  project.name === "RedFlagDeals Discord Bot"
-                                ) {
-                                  // Open modal for demo
-                                  setIsModalOpen(true);
-                                  return;
-                                }
-                                if (project.name === "FuelWise") {
-                                  // Open FuelWise modal for demo
-                                  setIsFuelWiseModalOpen(true);
-                                  return;
-                                }
-                                handleProjectClick(
-                                  project.name,
-                                  project.demoUrl
-                                );
-                              }}
-                            >
-                              <ExternalLink className="h-3.5 w-3.5" />
-                              <span>{"Explore"}</span>
-                            </Button>
-                          </div>
-                        )}
+                    <div className="flex flex-col gap-2 mt-auto">
+                      <div className="flex gap-2 mb-3 flex-wrap">
+                        {project.badges.map((badge) => (
+                          <Badge
+                            key={badge}
+                            className="bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                          >
+                            {badge}
+                          </Badge>
+                        ))}
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      {
+                        <div className="flex gap-2">
+                          {/* Show the code button for RFD, but make it show the private repo toast */}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex items-center gap-1 hover:border-slate-600 hover:text-slate-700 dark:hover:border-slate-400 dark:hover:text-slate-300 transition-colors"
+                            onClick={() => {
+                              if (
+                                project.name === "RedFlagDeals Discord Bot" ||
+                                project.name === "FuelWise"
+                              ) {
+                                // Show private repo toast
+                                toast({
+                                  title: "Private Repository",
+                                  description:
+                                    "The code for this project is currently private.",
+                                  variant: "default",
+                                });
+                                return;
+                              }
+                              handleProjectClick(project.name, project.codeUrl);
+                            }}
+                          >
+                            {project.name === "Canadian Recalls" ? (
+                              <>
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                <span>Blog</span>
+                              </>
+                            ) : (
+                              <>
+                                <Github className="h-3.5 w-3.5" />
+                                <span>Code</span>
+                              </>
+                            )}
+                          </Button>
+                          <Button
+                            size="sm"
+                            className="flex items-center gap-1 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all"
+                            onClick={() => {
+                              if (project.name === "RedFlagDeals Discord Bot") {
+                                // Open modal for demo
+                                setIsModalOpen(true);
+                                return;
+                              }
+                              if (project.name === "FuelWise") {
+                                // Open FuelWise modal for demo
+                                setIsFuelWiseModalOpen(true);
+                                return;
+                              }
+                              handleProjectClick(project.name, project.demoUrl);
+                            }}
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            <span>{"Explore"}</span>
+                          </Button>
+                        </div>
+                      }
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </section>
 
@@ -646,7 +763,10 @@ export default function Portfolio() {
               </div>
               {/* Formspree honeypot field for spam prevention */}
               <input type="text" name="_gotcha" style={{ display: "none" }} />
-              <Button type="submit" className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105">
+              <Button
+                type="submit"
+                className="flex items-center gap-2 bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105"
+              >
                 <Mail className="h-4 w-4" />
                 <span>Send Message</span>
               </Button>
@@ -723,20 +843,28 @@ export default function Portfolio() {
             </DialogContent>
           </Dialog>
 
-          <Dialog open={isFuelWiseModalOpen} onOpenChange={setIsFuelWiseModalOpen}>
+          <Dialog
+            open={isFuelWiseModalOpen}
+            onOpenChange={setIsFuelWiseModalOpen}
+          >
             <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle className="text-xl font-bold flex items-center justify-between">
                   <span>FuelWise Demo</span>
                 </DialogTitle>
                 <DialogDescription className="text-sm text-slate-600 dark:text-slate-400">
-                  AI-powered gas price predictions for Ontario drivers, saving money one fill-up at a time.
+                  AI-powered gas price predictions for Ontario drivers, saving
+                  money one fill-up at a time.
                 </DialogDescription>
               </DialogHeader>
 
               <div className="relative w-full mb-4 rounded-md overflow-hidden">
                 <Image
-                  src={theme === "dark" ? "/fuelwise-dark.png" : "/fuelwise-light.png"}
+                  src={
+                    theme === "dark"
+                      ? "/fuelwise-dark.png"
+                      : "/fuelwise-light.png"
+                  }
                   alt="FuelWise App Screenshot"
                   width={700}
                   height={400}
@@ -748,16 +876,22 @@ export default function Portfolio() {
                 <div>
                   <h3 className="font-medium mb-2">Project Overview</h3>
                   <p className="text-sm text-slate-600 dark:text-slate-400">
-                    FuelWise uses machine learning to analyze historical gas price data and predict tomorrow's prices across Ontario. 
-                    The app helps drivers make informed decisions about when to fill up, potentially saving significant money over time.
+                    FuelWise uses machine learning to analyze historical gas
+                    price data and predict tomorrow's prices across Ontario. The
+                    app helps drivers make informed decisions about when to fill
+                    up, potentially saving significant money over time.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="font-medium mb-2">Key Features</h3>
                   <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1 list-disc pl-5">
-                    <li>AI-powered price predictions with machine learning models</li>
-                    <li>Real-time data storage and caching with Redis (Upstash)</li>
+                    <li>
+                      AI-powered price predictions with machine learning models
+                    </li>
+                    <li>
+                      Real-time data storage and caching with Redis (Upstash)
+                    </li>
                     <li>Historical price tracking with PostgreSQL database</li>
                     <li>Location-based predictions for major Ontario cities</li>
                     <li>Daily price trend analysis and alerts</li>
@@ -780,15 +914,18 @@ export default function Portfolio() {
               </div>
               <DialogFooter>
                 <div className="flex flex-col gap-2 w-full">
-                  <Button 
-                    className="w-full" 
-                    onClick={() => window.open('https://fuelwise.app', '_blank')}
+                  <Button
+                    className="w-full"
+                    onClick={() =>
+                      window.open("https://fuelwise.app", "_blank")
+                    }
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Visit FuelWise
                   </Button>
                   <p className="text-sm text-slate-600 dark:text-slate-400 text-center">
-                    The code is private to protect API keys and proprietary prediction algorithms.
+                    The code is private to protect API keys and proprietary
+                    prediction algorithms.
                   </p>
                 </div>
               </DialogFooter>
