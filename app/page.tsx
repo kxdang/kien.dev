@@ -321,60 +321,159 @@ export default function Portfolio() {
               <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                      />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Frontend Development</h3>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
+                    Frontend Development
+                  </h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  Building responsive, accessible, and performant user interfaces
+                  Building responsive, accessible, and performant user
+                  interfaces
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Core Technologies</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Core Technologies
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
-                        { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", bgColor: "bg-cyan-100 dark:bg-cyan-900/30" },
-                        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", bgColor: "bg-gray-100 dark:bg-gray-800", invertDark: true },
-                        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", bgColor: "bg-yellow-100 dark:bg-yellow-900/30" },
-                        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", bgColor: "bg-green-100 dark:bg-green-900/30" },
+                        {
+                          name: "TypeScript",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "React",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+                          bgColor: "bg-cyan-100 dark:bg-cyan-900/30",
+                        },
+                        {
+                          name: "Next.js",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+                          bgColor: "bg-gray-100 dark:bg-gray-800",
+                          invertDark: true,
+                        },
+                        {
+                          name: "JavaScript",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+                          bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
+                        },
+                        {
+                          name: "Node.js",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                          bgColor: "bg-green-100 dark:bg-green-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className={`w-4 h-4 ${skill.invertDark && theme === 'dark' ? 'invert' : ''}`} />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className={`w-4 h-4 ${
+                              skill.invertDark && theme === "dark"
+                                ? "invert"
+                                : ""
+                            }`}
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Libraries & Styling</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Libraries & Styling
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "Redux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
-                        { name: "Zustand", logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='70'%3E🐻%3C/text%3E%3C/svg%3E", bgColor: "bg-amber-100 dark:bg-amber-900/30" },
-                        { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg", bgColor: "bg-pink-100 dark:bg-pink-900/30" },
-                        { name: "Tailwind", logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg", bgColor: "bg-teal-100 dark:bg-teal-900/30" },
-                        { name: "Apollo", logo: "https://www.vectorlogo.zone/logos/apollographql/apollographql-icon.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                        {
+                          name: "Redux",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
+                        {
+                          name: "Zustand",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='70'%3E🐻%3C/text%3E%3C/svg%3E",
+                          bgColor: "bg-amber-100 dark:bg-amber-900/30",
+                        },
+                        {
+                          name: "GraphQL",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+                          bgColor: "bg-pink-100 dark:bg-pink-900/30",
+                        },
+                        {
+                          name: "Tailwind",
+                          logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+                          bgColor: "bg-teal-100 dark:bg-teal-900/30",
+                        },
+                        {
+                          name: "Apollo",
+                          logo: "https://www.vectorlogo.zone/logos/apollographql/apollographql-icon.svg",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Design & Tools</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Design & Tools
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "Figma", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
-                        { name: "Photoshop", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
+                        {
+                          name: "Figma",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
+                        {
+                          name: "Photoshop",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -386,56 +485,176 @@ export default function Portfolio() {
               <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" />
+                    <svg
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 12h14M12 5l7 7-7 7"
+                      />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Platform Engineering</h3>
+                  <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
+                    Platform Engineering
+                  </h3>
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
                   Building tools, improving DX, and ensuring system reliability
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">CI/CD & Build Tools</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      CI/CD & Build Tools
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "CircleCI", logo: "https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg", bgColor: "bg-gray-100 dark:bg-gray-900/30" },
-                        { name: "Webpack", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg", bgColor: "bg-sky-100 dark:bg-sky-900/30" },
-                        { name: "Vite", logo: "https://vitejs.dev/logo.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
+                        {
+                          name: "CircleCI",
+                          logo: "https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg",
+                          bgColor: "bg-gray-100 dark:bg-gray-900/30",
+                        },
+                        {
+                          name: "Webpack",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/webpack/webpack-original.svg",
+                          bgColor: "bg-sky-100 dark:bg-sky-900/30",
+                        },
+                        {
+                          name: "Vite",
+                          logo: "https://vitejs.dev/logo.svg",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Monitoring & Analytics</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Monitoring & Analytics
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "Datadog", logo: "https://www.vectorlogo.zone/logos/datadoghq/datadoghq-icon.svg", bgColor: "bg-purple-100 dark:bg-purple-900/30" },
-                        { name: "Bugsnag", logo: "https://www.vectorlogo.zone/logos/bugsnag/bugsnag-icon.svg", bgColor: "bg-blue-100 dark:bg-blue-900/30" },
-                        { name: "PostHog", logo: "https://posthog.com/brand/posthog-logomark.svg", bgColor: "bg-orange-100 dark:bg-orange-900/30" },
+                        {
+                          name: "Datadog",
+                          logo: "https://www.vectorlogo.zone/logos/datadoghq/datadoghq-icon.svg",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
+                        {
+                          name: "Bugsnag",
+                          logo: "https://www.vectorlogo.zone/logos/bugsnag/bugsnag-icon.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "PostHog",
+                          logo: "https://posthog.com/brand/posthog-logomark.svg",
+                          bgColor: "bg-orange-100 dark:bg-orange-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className="w-4 h-4" />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">Version Control</h4>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Testing & Quality
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", bgColor: "bg-orange-100 dark:bg-orange-900/30" },
-                        { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", bgColor: "bg-gray-100 dark:bg-gray-800", invertDark: true },
+                        {
+                          name: "RTL",
+                          logo: "https://testing-library.com/img/octopus-128x128.png",
+                          bgColor: "bg-red-100 dark:bg-red-900/30",
+                        },
+                        {
+                          name: "Playwright",
+                          logo: "https://playwright.dev/img/playwright-logo.svg",
+                          bgColor: "bg-green-100 dark:bg-green-900/30",
+                        },
+                        {
+                          name: "Happo",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='60'%3E📸%3C/text%3E%3C/svg%3E",
+                          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                        },
                       ].map((skill) => (
-                        <div key={skill.name} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}>
-                          <img src={skill.logo} alt={skill.name} className={`w-4 h-4 ${skill.invertDark && theme === 'dark' ? 'invert' : ''}`} />
-                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">{skill.name}</span>
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Version Control
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        {
+                          name: "Git",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+                          bgColor: "bg-orange-100 dark:bg-orange-900/30",
+                        },
+                        {
+                          name: "GitHub",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+                          bgColor: "bg-gray-100 dark:bg-gray-800",
+                          invertDark: true,
+                        },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className={`w-4 h-4 ${
+                              skill.invertDark && theme === "dark"
+                                ? "invert"
+                                : ""
+                            }`}
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
                         </div>
                       ))}
                     </div>
