@@ -1036,7 +1036,7 @@ export default function Portfolio() {
                   <ul className="text-sm  text-slate-600 dark:text-slate-400 space-y-1 list-disc pl-5">
                     <li>Real-time keyword storage with Upstash</li>
                     <li>Instant deal alerts via user pings</li>
-                    <li>Scans RFD every 30 seconds</li>
+                    <li>Utilizes RSS feed to constantly scan for deals</li>
                     <li>Built with DiscordJS and custom bot commands</li>
                   </ul>
                 </div>
