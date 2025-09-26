@@ -48,6 +48,7 @@ export default function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFuelWiseModalOpen, setIsFuelWiseModalOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDataSolutionsExpanded, setIsDataSolutionsExpanded] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -318,7 +319,7 @@ export default function Portfolio() {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Frontend Development Card */}
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 card-hover">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
                     <svg
@@ -482,7 +483,7 @@ export default function Portfolio() {
               </div>
 
               {/* Platform Engineering Card */}
-              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 card-hover">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
                     <svg
@@ -662,6 +663,209 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+
+            {/* Data Engineering Card - Full Width */}
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 border border-slate-200 dark:border-slate-700 mt-6 card-hover">
+              <div
+                className="relative flex items-center gap-2 mb-4 cursor-pointer group"
+                onClick={() =>
+                  setIsDataSolutionsExpanded(!isDataSolutionsExpanded)
+                }
+              >
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors flex items-center gap-2">
+                  Data Engineering
+                  <span className="text-base">🌱</span>
+                </h3>
+                <svg
+                  className={`w-5 h-5 text-slate-600 dark:text-slate-400 transition-transform ${
+                    isDataSolutionsExpanded ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+                {/* Tooltip */}
+                <div className="absolute left-0 -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                  <div className="bg-slate-900 dark:bg-slate-700 text-white text-xs px-3 py-1.5 rounded-md whitespace-nowrap shadow-lg">
+                    🌱 Currently developing these skills below
+                  </div>
+                </div>
+              </div>
+              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                Building data engineering and analytics skills for healthcare
+                transformation
+              </p>
+              {isDataSolutionsExpanded && (
+                <div className="space-y-4 animate-in fade-in duration-300">
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Data Platforms & Tools
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        {
+                          name: "Microsoft Fabric",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "Power BI",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F2C811' d='M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z'/%3E%3C/svg%3E",
+                          bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
+                        },
+                        {
+                          name: "Azure Data Factory",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "SQL Server",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+                          bgColor: "bg-red-100 dark:bg-red-900/30",
+                        },
+                        {
+                          name: "Python (PySpark)",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "Apache Spark",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg",
+                          bgColor: "bg-orange-100 dark:bg-orange-900/30",
+                        },
+                        {
+                          name: "Databricks",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FF3621' d='M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5'/%3E%3C/svg%3E",
+                          bgColor: "bg-red-100 dark:bg-red-900/30",
+                        },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      Healthcare Data & Standards
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        {
+                          name: "MEDITECH Expanse",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E",
+                          bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
+                        },
+                        {
+                          name: "CIHI Datasets",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236366F1' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z'/%3E%3C/svg%3E",
+                          bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
+                        },
+                        {
+                          name: "MOH Integration",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23EC4899' d='M22 12h-4l-3 9L9 3l-3 9H2'/%3E%3C/svg%3E",
+                          bgColor: "bg-pink-100 dark:bg-pink-900/30",
+                        },
+                        {
+                          name: "Medallion Architecture",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23A855F7' d='M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'/%3E%3C/svg%3E",
+                          bgColor: "bg-purple-100 dark:bg-purple-900/30",
+                        },
+                        {
+                          name: "Data Governance",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2314B8A6' d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E",
+                          bgColor: "bg-teal-100 dark:bg-teal-900/30",
+                        },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wider">
+                      DevOps & Development
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        {
+                          name: "Azure DevOps",
+                          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+                          bgColor: "bg-blue-100 dark:bg-blue-900/30",
+                        },
+                        {
+                          name: "CI/CD Pipelines",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z'/%3E%3C/svg%3E",
+                          bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
+                        },
+                        {
+                          name: "AGILE/Scrum",
+                          logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F59E0B' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z'/%3E%3C/svg%3E",
+                          bgColor: "bg-amber-100 dark:bg-amber-900/30",
+                        },
+                      ].map((skill) => (
+                        <div
+                          key={skill.name}
+                          className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-md border border-slate-200 dark:border-slate-600`}
+                        >
+                          <img
+                            src={skill.logo}
+                            alt={skill.name}
+                            className="w-4 h-4"
+                          />
+                          <span className="text-xs font-medium text-slate-700 dark:text-slate-300">
+                            {skill.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </section>
 
           <section id="experience" className="mb-16">
@@ -670,6 +874,15 @@ export default function Portfolio() {
             </h2>
             <div className="space-y-6">
               {[
+                {
+                  role: "Data Solutions Principal (Part-time)",
+                  company: "Collingwood General & Marine Hospital",
+                  period: "2025 – Present",
+                  url: "https://cgmh.on.ca",
+                  logoUrl: "https://cgmh.on.ca/images/layout/logo.png",
+                  description:
+                    "🪾Building expertise in data engineering and Microsoft Fabric while supporting the transformation of healthcare data from multiple sources (EMR, MOH, CIHI) into unified analytics platforms that drive better patient outcomes.",
+                },
                 {
                   role: "Software Developer",
                   company: "Penn Entertainment",
