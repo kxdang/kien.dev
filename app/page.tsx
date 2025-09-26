@@ -11,6 +11,8 @@ import {
   ExternalLink,
   Moon,
   Sun,
+  Volume2,
+  PenTool,
 } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
@@ -222,21 +224,21 @@ export default function Portfolio() {
                 Kien Dang
               </h1>
               <h2 className="text-lg text-slate-600 dark:text-slate-300 mb-4">
-                Software Developer
+                Software Engineer
               </h2>
               <div className="flex gap-2 mb-6 flex-wrap justify-center">
                 Toronto, Canada 🇨🇦
               </div>
               <p className="text-slate-600 mb-6 dark:text-slate-400 ">
-                I build beautiful, responsive web applications with modern
-                technologies.
+                From biochemistry labs to code, catalyzed by coffee and
+                curiosity
               </p>
-              <div className="flex gap-3 mb-6">
+              <div className="flex gap-3">
                 <Button
                   variant="outline"
                   size="icon"
                   asChild
-                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                  className="hover:scale-110 transition-transform border-slate-300 dark:border-slate-600 hover:border-slate-600 dark:hover:border-slate-400"
                 >
                   <Link
                     href="https://github.com/kxdang"
@@ -250,7 +252,7 @@ export default function Portfolio() {
                   variant="outline"
                   size="icon"
                   asChild
-                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                  className="hover:scale-110 transition-transform border-slate-300 dark:border-slate-600 hover:border-slate-600 dark:hover:border-slate-400"
                 >
                   <Link
                     href="https://www.linkedin.com/in/kien-dang/"
@@ -264,19 +266,30 @@ export default function Portfolio() {
                   variant="outline"
                   size="icon"
                   asChild
-                  className="hover:scale-110 transition-transform hover:border-slate-600 dark:hover:border-slate-400"
+                  className="hover:scale-110 transition-transform border-slate-300 dark:border-slate-600 hover:border-slate-600 dark:hover:border-slate-400"
                 >
-                  <Link href="mailto:hello@kien.dev" aria-label="Email">
-                    <Mail className="h-4 w-4" />
+                  <Link
+                    href="https://kiendang.me"
+                    target="_blank"
+                    aria-label="Blog"
+                  >
+                    <PenTool className="h-4 w-4" />
                   </Link>
                 </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="hover:scale-110 transition-transform border-slate-300 dark:border-slate-600 hover:border-slate-600 dark:hover:border-slate-400"
+                  onClick={() => {
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  aria-label="Contact"
+                >
+                  <Mail className="h-4 w-4" />
+                </Button>
               </div>
-              <Button
-                className="w-full bg-gradient-to-r from-slate-700 to-blue-900 hover:from-slate-800 hover:to-blue-950 text-white transition-all duration-300 transform hover:scale-105"
-                onClick={handleDownloadResumeClick}
-              >
-                Download Resume
-              </Button>
             </CardContent>
           </Card>
         </div>
@@ -287,11 +300,31 @@ export default function Portfolio() {
               About Me
             </h2>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
-              Hello! I'm Kien — a software developer with{" "}
-              {getYearsOfExperience()} years of experience and a strong focus on
-              frontend development. I specialize in crafting responsive,
-              accessible, and high-performance user interfaces that deliver
-              seamless web experiences.
+              Hello! I'm{" "}
+              <button
+                onClick={() => {
+                  const audio = new Audio("/kien.mp3");
+                  audio.play();
+                }}
+                className="relative inline-flex items-center gap-1 hover:scale-105 transition-transform cursor-pointer group"
+                aria-label="Play pronunciation of Kien"
+              >
+                <span className="font-bold group-hover:text-slate-800 dark:group-hover:text-slate-200">
+                  Kien
+                </span>
+                <Volume2 className="h-4 w-4 text-slate-600 dark:text-slate-400 align-text-bottom" />
+                {/* Tooltip */}
+                <span className="absolute left-1/2 -translate-x-1/2 -top-8 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 whitespace-nowrap">
+                  <span className="bg-slate-900 dark:bg-slate-700 text-white text-xs px-3 py-1.5 rounded-md shadow-lg">
+                    \key-in\
+                  </span>
+                </span>
+              </button>{" "}
+              — a software developer with {getYearsOfExperience()} years of
+              experience and a strong focus on frontend development. I
+              specialize in crafting responsive, accessible, and
+              high-performance user interfaces that deliver seamless web
+              experiences.
             </p>
             <p className="text-slate-600 mb-4 dark:text-slate-300">
               After graduating from the University of Waterloo with a Bachelor
