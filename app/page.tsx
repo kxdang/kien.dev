@@ -37,7 +37,8 @@ const getYearsOfExperience = () => {
 const needsWhiteBgLogo = (company: string) =>
   company === "Penn Entertainment" ||
   company === "theScore" ||
-  company === "Coveo";
+  company === "Coveo" ||
+  company === "Collingwood General & Marine Hospital";
 
 // Helper: returns true if the company is theScore
 const isTheScore = (company: string) => company === "theScore";
@@ -914,7 +915,7 @@ export default function Portfolio() {
                   url: "https://cgmh.on.ca",
                   logoUrl: "https://cgmh.on.ca/images/layout/logo.png",
                   description:
-                    "🪾Building expertise in data engineering and Microsoft Fabric while supporting the transformation of healthcare data from multiple sources (EMR, MOH, CIHI) into unified analytics platforms that drive better patient outcomes.",
+                    "Building expertise in data engineering and Microsoft Fabric while supporting the transformation of healthcare data from multiple sources (EMR, MOH, CIHI) into unified analytics platforms that drive better patient outcomes.",
                 },
                 {
                   role: "Software Developer",
