@@ -10,7 +10,7 @@ import { PHProvider } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kien Dang - Software Developer | React, Next.js, TypeScript",
+  title: "Kien Dang | Software Developer | React, Next.js, TypeScript",
   description:
     "Kien Dang is a Software Developer in Toronto specializing in React, Next.js, and TypeScript. Currently building web experiences at Penn Entertainment. View portfolio, projects, and blog.",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "Web Development",
     "Portfolio",
     "kien.dev",
-    "kiendang.me"
+    "kiendang.me",
   ],
   authors: [{ name: "Kien Dang", url: "https://kien.dev" }],
   creator: "Kien Dang",
@@ -39,7 +39,8 @@ export const metadata: Metadata = {
     url: "https://kien.dev",
     siteName: "Kien Dang Portfolio",
     title: "Kien Dang - Software Developer",
-    description: "Software Developer in Toronto specializing in React, Next.js, and modern web technologies. Currently at Penn Entertainment.",
+    description:
+      "Software Developer in Toronto specializing in React, Next.js, and modern web technologies. Currently at Penn Entertainment.",
     images: [
       {
         url: "/og-image.png",
@@ -52,7 +53,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kien Dang - Software Developer",
-    description: "Software Developer specializing in React, Next.js, and TypeScript. View my portfolio and projects.",
+    description:
+      "Software Developer specializing in React, Next.js, and TypeScript. View my portfolio and projects.",
     images: ["/og-image.png"],
     creator: "@k1dang",
   },
@@ -95,24 +97,25 @@ export default function RootLayout({
       "https://github.com/kxdang",
       "https://www.linkedin.com/in/kien-dang/",
       "https://kiendang.me",
-      "https://kiendang.ca"
+      "https://kiendang.ca",
     ],
     jobTitle: "Software Developer",
     worksFor: {
       "@type": "Organization",
-      name: "Penn Entertainment"
+      name: "Penn Entertainment",
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
-      name: "University of Waterloo"
+      name: "University of Waterloo",
     },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Toronto",
       addressRegion: "ON",
-      addressCountry: "Canada"
+      addressCountry: "Canada",
     },
-    description: "Software Developer specializing in React, Next.js, and TypeScript. Building web experiences at Penn Entertainment.",
+    description:
+      "Software Developer specializing in React, Next.js, and TypeScript. Building web experiences at Penn Entertainment.",
     knowsAbout: [
       "React",
       "Next.js",
@@ -120,8 +123,8 @@ export default function RootLayout({
       "JavaScript",
       "Frontend Development",
       "Web Development",
-      "Software Engineering"
-    ]
+      "Software Engineering",
+    ],
   };
 
   return (
