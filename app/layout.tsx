@@ -10,7 +10,7 @@ import { PHProvider } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kien Dang | Software Developer | React, Next.js, TypeScript",
+  title: "Kien Dang | Hello World | React, Next.js, TypeScript",
   description:
     "Kien Dang is a Software Developer in Toronto specializing in React, Next.js, and TypeScript. Currently building web experiences at Penn Entertainment. View portfolio, projects, and blog.",
   keywords: [
