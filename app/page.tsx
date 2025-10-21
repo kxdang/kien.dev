@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/dialog";
 
 const getYearsOfExperience = () => {
-  const startYear = 2019;
+  const startYear = 2018;
   const currentYear = new Date().getFullYear();
   return currentYear - startYear;
 };
