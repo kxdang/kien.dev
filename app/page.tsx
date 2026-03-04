@@ -33,10 +33,9 @@ const getYearsOfExperience = () => {
   return currentYear - startYear;
 };
 
-// Helper: returns true if the company is Penn, theScore, or Coveo
+// Helper: returns true if the company logo needs a white background in dark mode
 const needsWhiteBgLogo = (company: string) =>
   company === "Penn Entertainment" ||
-  company === "theScore" ||
   company === "Coveo" ||
   company === "Collingwood General & Marine Hospital";
 
@@ -932,8 +931,7 @@ export default function Portfolio() {
                   company: "theScore",
                   period: "2023 - 2025",
                   url: "https://thescore.bet/",
-                  logoUrl:
-                    "https://cdn.brandfetch.io/idL7aMtexJ/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1667569467815",
+                  logoUrl: "/thescore-logo.svg",
                   description:
                     "Driven by a focus on developer experience, performance, and frontend scalability, I've led initiatives that improved CI efficiency, test reliability, and application stability, while also mentoring developers, enhancing mobile usability, and building real-time observability with Datadog and Bugsnag",
                 },
@@ -949,7 +947,7 @@ export default function Portfolio() {
                 },
               ].map((job, index) => {
                 const hasLogo = !!job.logoUrl;
-                // Add a white background in dark mode for Penn, theScore, and Coveo logos
+                // Add a white background in dark mode for Penn and Coveo logos
                 const logoWrapperClass = needsWhiteBgLogo(job.company)
                   ? "inline-flex items-center justify-center rounded bg-transparent dark:bg-white"
                   : "";
