@@ -36,6 +36,7 @@ const getYearsOfExperience = () => {
 // Helper: returns true if the company logo needs a white background in dark mode
 const needsWhiteBgLogo = (company: string) =>
   company === "Penn Entertainment" ||
+  company === "theScore" ||
   company === "Coveo" ||
   company === "Collingwood General & Marine Hospital";
 
@@ -953,7 +954,7 @@ export default function Portfolio() {
                   : "";
                 // Make theScore logo slightly smaller
                 const logoImgClass = isTheScore(job.company)
-                  ? `h-4 w-auto object-contain ${
+                  ? `h-3 w-auto object-contain ${
                       needsWhiteBgLogo(job.company) ? "p-0.5" : ""
                     }`
                   : `h-5 w-auto object-contain ${
