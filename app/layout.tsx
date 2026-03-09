@@ -144,7 +144,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} min-h-screen bg-slate-50 text-black dark:bg-slate-900 dark:text-white`}
+        className={`${inter.className} min-h-screen text-slate-800 dark:text-slate-200`}
       >
         <PHProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
