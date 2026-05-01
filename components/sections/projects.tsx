@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, FlaskConical } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useToast } from "@/components/ui/use-toast";
 import { motion } from "motion/react";
@@ -21,24 +21,7 @@ import { projects } from "@/data/portfolio";
 export default function Projects() {
   const { theme } = useTheme();
   const { toast } = useToast();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFuelWiseModalOpen, setIsFuelWiseModalOpen] = useState(false);
-
-  const handleProjectClick = (projectName: string, url: string) => {
-    if (projectName === "RedFlagDeals Discord Bot" && url === "#") {
-      toast({
-        title: "Private Repository",
-        description: "The code for this project is currently private.",
-        variant: "default",
-      });
-      return;
-    }
-    if (projectName === "RedFlagDeals Discord Bot" && url === "rfd-demo") {
-      setIsModalOpen(true);
-      return;
-    }
-    window.open(url, "_blank");
-  };
 
   return (
     <section id="projects" className="mb-16">
@@ -69,16 +52,55 @@ export default function Projects() {
               whileHover={{ y: -4 }}
               className="glass rounded-2xl overflow-hidden group transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 flex flex-col h-full"
             >
-              {/* Image */}
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={imageUrl}
-                  alt={`Project ${project.name}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+              {/* Image / Stealth header */}
+              {project.isStealth ? (
+                <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-violet-900 via-blue-900 to-slate-900 dark:from-violet-950 dark:via-blue-950 dark:to-slate-950">
+                  {/* shimmer sweep */}
+                  <motion.div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
+                    animate={{ x: ["-100%", "100%"] }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  {/* center icon with breathing pulse */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      animate={{ opacity: [0.4, 0.7, 0.4] }}
+                      transition={{
+                        duration: 2.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    >
+                      <FlaskConical className="h-16 w-16 text-slate-300" />
+                    </motion.div>
+                  </div>
+                  {/* corner badge */}
+                  <div className="absolute top-3 right-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-slate-300 uppercase">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-60" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-slate-300" />
+                      </span>
+                      In the Lab
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={imageUrl}
+                    alt={`Project ${project.name}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              )}
 
               {/* Content */}
               <div className="p-5 flex flex-col flex-grow">
@@ -100,122 +122,74 @@ export default function Projects() {
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center gap-1 glass-subtle border-0 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
-                      onClick={() => {
-                        if (project.isPrivate) {
-                          toast({
-                            title: "Private Repository",
-                            description:
-                              "The code for this project is currently private.",
-                            variant: "default",
-                          });
-                          return;
-                        }
-                        handleProjectClick(project.name, project.codeUrl);
-                      }}
-                    >
-                      {project.blogInsteadOfCode ? (
-                        <>
-                          <ExternalLink className="h-3.5 w-3.5" />
-                          <span>Blog</span>
-                        </>
-                      ) : (
-                        <>
-                          <Github className="h-3.5 w-3.5" />
-                          <span>Code</span>
-                        </>
-                      )}
-                    </Button>
-                    <Button
-                      size="sm"
-                      className="flex items-center gap-1 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white shadow-lg shadow-violet-500/20 transition-all"
-                      onClick={() => {
-                        if (project.name === "RedFlagDeals Discord Bot") {
-                          setIsModalOpen(true);
-                          return;
-                        }
-                        if (project.name === "FuelWise") {
-                          setIsFuelWiseModalOpen(true);
-                          return;
-                        }
-                        handleProjectClick(project.name, project.demoUrl);
-                      }}
-                    >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      <span>Explore</span>
-                    </Button>
-                  </div>
+                  {project.isStealth ? (
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500" />
+                        </span>
+                        <span className="font-medium">
+                          {project.comingLabel ?? "Coming soon"}
+                        </span>
+                      </span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 italic">
+                        more soon
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="flex items-center gap-1 glass-subtle border-0 hover:bg-white/60 dark:hover:bg-white/10 transition-colors"
+                        onClick={() => {
+                          if (project.isPrivate) {
+                            toast({
+                              title: "Private Repository",
+                              description:
+                                "The code for this project is currently private.",
+                              variant: "default",
+                            });
+                            return;
+                          }
+                          window.open(project.codeUrl, "_blank");
+                        }}
+                      >
+                        {project.blogInsteadOfCode ? (
+                          <>
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            <span>Blog</span>
+                          </>
+                        ) : (
+                          <>
+                            <Github className="h-3.5 w-3.5" />
+                            <span>Code</span>
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        size="sm"
+                        className="flex items-center gap-1 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white shadow-lg shadow-violet-500/20 transition-all"
+                        onClick={() => {
+                          if (project.name === "FuelWise") {
+                            setIsFuelWiseModalOpen(true);
+                            return;
+                          }
+                          window.open(project.demoUrl, "_blank");
+                        }}
+                      >
+                        <ExternalLink className="h-3.5 w-3.5" />
+                        <span>Explore</span>
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
           );
         })}
       </div>
-
-      {/* RFD Modal */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[700px] max-h-[90vh] overflow-y-auto glass-strong border-0">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold">
-              RedFlagDeals Bot Demo
-            </DialogTitle>
-            <DialogDescription className="text-sm text-slate-500 dark:text-slate-400">
-              A showcase of my bot constantly scanning every few seconds and
-              alerting me when its found a deal.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="relative w-full mb-4 rounded-xl overflow-hidden">
-            <video
-              src="/rfd.mp4"
-              autoPlay
-              loop
-              muted
-              controls
-              className="object-cover w-full h-auto"
-            />
-          </div>
-          <div className="space-y-4">
-            <div>
-              <h3 className="font-medium mb-2">Project Overview</h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400">
-                I built this to avoid endless RFD scrolling and impulse buying.
-                My Discord bot runs on my home server using Node.js and pm2,
-                stores keywords with Upstash, and sends alerts only for deals I
-                actually care about.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-medium mb-2">Key Features</h3>
-              <ul className="text-sm text-slate-500 dark:text-slate-400 space-y-1 list-disc pl-5">
-                <li>Real-time keyword storage with Upstash</li>
-                <li>Instant deal alerts via user pings</li>
-                <li>Utilizes RSS feed to constantly scan for deals</li>
-                <li>Built with DiscordJS and custom bot commands</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-medium mb-2">Technologies Used</h3>
-              <div className="flex flex-wrap gap-2">
-                <Badge>JavaScript</Badge>
-                <Badge>Discord.js</Badge>
-                <Badge>Upstash</Badge>
-                <Badge>Node.js</Badge>
-              </div>
-            </div>
-          </div>
-          <DialogFooter>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              This private bot was built for personal use and for friends. The
-              code isn&apos;t public to protect API keys and avoid potential
-              misuses.
-            </p>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
 
       {/* FuelWise Modal */}
       <Dialog

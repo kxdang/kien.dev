@@ -43,6 +43,8 @@ export interface Project {
   demoUrl: string;
   isPrivate?: boolean;
   blogInsteadOfCode?: boolean;
+  isStealth?: boolean;
+  comingLabel?: string;
 }
 
 export const skillCards: SkillCard[] = [
@@ -265,7 +267,7 @@ export const skillCards: SkillCard[] = [
 
 export const jobs: Job[] = [
   {
-    role: "Data Solutions Principal (Part-time)",
+    role: "Data Engineer (Part-time)",
     company: "Collingwood General & Marine Hospital",
     period: "2025 – Present",
     url: "https://cgmh.on.ca",
@@ -306,6 +308,16 @@ export const jobs: Job[] = [
 
 export const projects: Project[] = [
   {
+    name: "Untitled",
+    description:
+      "Quietly cooking up something at the intersection of data and craft. The shape of it will become clearer soon.",
+    badges: ["Side Project", "WIP"],
+    imageUrl: "",
+    codeUrl: "",
+    demoUrl: "",
+    isStealth: true,
+  },
+  {
     name: "Personal Blog",
     description:
       "My space to reflect on programming, track progress, and stay accountable with Pomodoro-fueled learning sessions.",
@@ -315,17 +327,7 @@ export const projects: Project[] = [
     codeUrl: "https://github.com/kxdang/kiendang",
     demoUrl: "https://kiendang.me/",
   },
-  {
-    name: "RedFlagDeals Discord Bot",
-    description:
-      "A private Discord bot that monitors RedFlagDeals and sends real-time alerts on savings and price errors.",
-    badges: ["Node.js", "Discord.js", "Upstash"],
-    imageUrl: "/discord.png",
-    codeUrl: "#",
-    demoUrl: "rfd-demo",
-    isPrivate: true,
-  },
-  {
+{
     name: "Canadian Recalls",
     description:
       "A website that provides Canadians a better UX experience when checking for product recalls.",

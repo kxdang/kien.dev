@@ -14,26 +14,26 @@ export default function About() {
         <h2 className="section-heading">About Me</h2>
         <div className="glass rounded-2xl p-6 space-y-4">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-            Hello! I&apos;m Kien — a software developer with a strong focus on
-            frontend development. I specialize in crafting responsive,
-            accessible, and high-performance user interfaces that deliver
-            seamless web experiences.
+            Hi, I&apos;m Kien, a software developer focused on frontend. I build
+            responsive, accessible interfaces and care a lot about how a product
+            actually feels to use.
           </p>
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-            After graduating from the University of Waterloo with a Bachelor of
-            Science in Biochemistry, I found myself working in a costing role
-            where I spent most of my time in Excel spreadsheets. While the job
-            wasn&apos;t related to my degree, it was there that I discovered a
-            passion for problem-solving through automation — I started using VBA
-            to streamline repetitive tasks, and that experience ignited a deeper
-            curiosity about programming.
+            My path here was unconventional: biochem at Waterloo, a costing job
+            where I started automating Excel with VBA, then a self-taught pivot
+            into software.
           </p>
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-            Motivated by that spark, I made the decision to leave and pursue a
-            self-taught path into software development. Since then, I&apos;ve
-            been committed to continuous learning and growth, staying at the
-            forefront of frontend technologies to build fast, accessible, and
-            user-friendly applications.
+            AI tools like Claude Code are part of how I work day-to-day. Pairing
+            with it lets me ship faster and refactor smarter. I learn at a speed
+            that wasn&apos;t possible a few years ago.
+          </p>
+          <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+            That speed has meant growing from frontend into data engineering and
+            broader full-stack work, learning to reason about trade-offs across
+            the stack. The space I&apos;m drawn to is bridging older systems
+            with modern AI tooling, where there&apos;s still real friction worth
+            untangling.
           </p>
         </div>
       </motion.div>
