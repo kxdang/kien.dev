@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { jobs, needsWhiteBgLogo, isTheScore, type Job } from "@/data/portfolio";
 
 function JobLogo({ job }: { job: Job }) {
@@ -39,6 +40,12 @@ function JobLogo({ job }: { job: Job }) {
 export default function Experience() {
   const currentJobs = jobs.filter((j) => j.period.includes("Present"));
   const pastJobs = jobs.filter((j) => !j.period.includes("Present"));
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 40%"],
+  });
+  const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section id="experience" className="mb-16">
@@ -104,9 +111,13 @@ export default function Experience() {
 
       {/* Past roles — timeline */}
       {pastJobs.length > 0 && (
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-slate-300 dark:bg-slate-700 hidden md:block" />
+        <div ref={timelineRef} className="relative">
+          {/* Timeline line — faint rail + scroll-driven violet progress */}
+          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-700/60 hidden md:block" />
+          <motion.div
+            style={{ height: progressHeight }}
+            className="absolute left-[19px] top-2 w-px bg-violet-500/70 dark:bg-violet-400/60 hidden md:block origin-top"
+          />
 
           <div className="space-y-6">
             {pastJobs.map((job, index) => (

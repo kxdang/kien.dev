@@ -23,6 +23,7 @@ export interface SkillCard {
   gradient: string;
   categories: SkillCategory[];
   expandable?: boolean;
+  wide?: boolean;
 }
 
 export interface Job {
@@ -219,6 +220,7 @@ export const skillCards: SkillCard[] = [
       "Building analytics pipelines and modern data platforms for healthcare transformation",
     icon: "data",
     gradient: "from-emerald-400 to-cyan-600",
+    wide: true,
     categories: [
       {
         title: "Data Platforms & Tools",

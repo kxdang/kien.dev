@@ -55,7 +55,7 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
       className={`glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 ${
-        card.expandable ? "md:col-span-2" : ""
+        card.wide || card.expandable ? "md:col-span-2" : ""
       }`}
     >
       <div
