@@ -27,13 +27,6 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
 
   return (
     <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 py-20 overflow-hidden">
-      {/* Animated gradient blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob blob-1" />
-        <div className="blob blob-2" />
-        <div className="blob blob-3" />
-      </div>
-
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
         {/* Theme toggle - top right */}
         <div className="absolute top-0 right-0 flex gap-2">
@@ -66,8 +59,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
           transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="relative mb-8"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 blur-2xl opacity-30 scale-110 animate-pulse-slow" />
-          <div className="relative w-36 h-36 rounded-full overflow-hidden border-2 border-white/20 shadow-2xl">
+          <div className="relative w-36 h-36 rounded-full overflow-hidden border border-slate-200 dark:border-white/10 shadow-xl">
             <Image
               src="/kien.png"
               alt="Kien Dang"
@@ -85,9 +77,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-5xl md:text-6xl font-bold mb-3 tracking-tight"
         >
-          <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-violet-700 dark:from-white dark:via-blue-300 dark:to-violet-400 bg-clip-text text-transparent">
-            Kien Dang
-          </span>
+          <span className="text-slate-900 dark:text-white">Kien Dang</span>
         </motion.h1>
 
         {/* Subtitle with pronunciation */}
@@ -106,7 +96,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
               const audio = new Audio("/kien.mp3");
               audio.play();
             }}
-            className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors group cursor-pointer"
             aria-label="Play pronunciation of Kien"
           >
             <span className="text-sm font-medium">\key-in\</span>
@@ -160,7 +150,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
+                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
                   onClick={() =>
                     document
                       .getElementById("contact")
@@ -175,7 +165,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
                   variant="outline"
                   size="icon"
                   asChild
-                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
+                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
                 >
                   <Link
                     href={link.href}

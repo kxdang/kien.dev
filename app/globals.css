@@ -103,7 +103,11 @@ body {
     width: 48px;
     height: 3px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    background: #334155;
+  }
+
+  .dark .section-heading::after {
+    background: #cbd5e1;
   }
 }
 
@@ -190,154 +194,17 @@ body {
 
 /* ─── Background ─── */
 body {
-  background-color: #f0eef6;
+  background-color: #fafafa;
   min-height: 100vh;
 }
 
 .dark body {
-  background-color: #0a0e1a;
-}
-
-/* ─── Fixed page-level gradient blobs (visible through glass) ─── */
-.page-bg-blobs {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.page-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-}
-
-/* Light mode blobs - vivid so glass has color to frost over */
-.page-blob-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%);
-  top: -8%;
-  right: -8%;
-  animation: blob-drift 18s ease-in-out infinite;
-}
-
-.page-blob-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
-  top: 30%;
-  left: -10%;
-  animation: blob-drift 22s ease-in-out infinite reverse;
-}
-
-.page-blob-3 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
-  top: 55%;
-  right: -5%;
-  animation: blob-drift 15s ease-in-out infinite 3s;
-}
-
-.page-blob-4 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
-  bottom: -5%;
-  left: 20%;
-  animation: blob-drift 20s ease-in-out infinite 5s;
-}
-
-.page-blob-5 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-  top: 80%;
-  right: 25%;
-  animation: blob-drift 17s ease-in-out infinite 2s;
-}
-
-/* Dark mode - same blobs, toned down */
-.dark .page-blob-1 {
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-}
-.dark .page-blob-2 {
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
-}
-.dark .page-blob-3 {
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
-}
-.dark .page-blob-4 {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-}
-.dark .page-blob-5 {
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-}
-
-@keyframes blob-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(40px, -50px) scale(1.08); }
-  50% { transform: translate(-30px, 30px) scale(0.95); }
-  75% { transform: translate(20px, 40px) scale(1.05); }
-}
-
-/* ─── Hero-specific blobs (more intense, on top of page blobs) ─── */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.dark .blob {
-  opacity: 0.2;
-}
-
-.blob-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
-  top: -10%;
-  right: -5%;
-  animation: blob-drift 12s ease-in-out infinite;
-}
-
-.blob-2 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
-  bottom: -5%;
-  left: -5%;
-  animation: blob-drift 15s ease-in-out infinite reverse;
-}
-
-.blob-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #ec4899 0%, transparent 70%);
-  top: 40%;
-  left: 30%;
-  animation: blob-drift 10s ease-in-out infinite 2s;
-}
-
-
-/* ─── Pulse slow for hero glow ─── */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1.1); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
+  background-color: #0a0a0a;
 }
 
 /* ─── Focus states ─── */
 *:focus-visible {
-  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline: 2px solid rgba(100, 116, 139, 0.6);
   outline-offset: 2px;
 }
 

@@ -10,24 +10,15 @@ const iconPaths: Record<string, string> = {
   data: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
 };
 
-// Static gradient classes so Tailwind doesn't purge them
-const iconGradients: Record<string, string> = {
-  code: "from-cyan-500 to-blue-600",
-  platform: "from-violet-500 to-fuchsia-600",
-  data: "from-emerald-400 to-cyan-600",
-};
-
 function SkillBadge({
   skill,
   theme,
 }: {
-  skill: { name: string; logo: string; bgColor: string; invertDark?: boolean };
+  skill: { name: string; logo: string; invertDark?: boolean };
   theme?: string;
 }) {
   return (
-    <div
-      className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-lg border border-white/40 dark:border-white/5 backdrop-blur-sm`}
-    >
+    <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100/80 dark:bg-white/5 rounded-lg border border-slate-200/60 dark:border-white/10">
       <img
         src={skill.logo}
         alt={skill.name}
@@ -52,14 +43,14 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
-      className="glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20"
+      className={`glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 ${
+        card.wide ? "md:col-span-2" : ""
+      }`}
     >
       <div className="flex items-center gap-3 mb-3">
-        <div
-          className={`w-10 h-10 min-w-[2.5rem] bg-gradient-to-br ${iconGradients[card.icon]} rounded-xl flex items-center justify-center shadow-lg ring-1 ring-white/10`}
-        >
+        <div className="w-10 h-10 min-w-[2.5rem] bg-slate-900 dark:bg-white rounded-xl flex items-center justify-center shadow-sm">
           <svg
-            className="w-5 h-5 text-white"
+            className="w-5 h-5 text-white dark:text-slate-900"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

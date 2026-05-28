@@ -33,19 +33,10 @@ export default function Portfolio() {
 
   return (
     <div className="relative">
-      {/* Fixed background blobs - visible through all glass elements */}
-      <div className="page-bg-blobs">
-        <div className="page-blob page-blob-1" />
-        <div className="page-blob page-blob-2" />
-        <div className="page-blob page-blob-3" />
-        <div className="page-blob page-blob-4" />
-        <div className="page-blob page-blob-5" />
-      </div>
-
       {/* Progress bar */}
       <div className="fixed top-0 left-0 w-full h-[2px] bg-transparent z-50">
         <motion.div
-          className="h-full bg-gradient-to-r from-violet-500 via-blue-500 to-cyan-500"
+          className="h-full bg-slate-800 dark:bg-slate-200"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -73,7 +64,7 @@ export default function Portfolio() {
             &copy; {new Date().getFullYear()}{" "}
             <Link
               href="https://kiendang.ca"
-              className="hover:text-violet-500 transition-colors"
+              className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               Kien Dang.
             </Link>{" "}

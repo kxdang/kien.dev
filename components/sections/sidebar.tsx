@@ -59,8 +59,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
         <div className="p-6 pt-4 flex flex-col items-center text-center">
           {/* Profile image with glow */}
           <div className="relative mb-4">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-violet-500 to-fuchsia-500 blur-xl opacity-25 scale-110 animate-pulse-slow" />
-            <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-white/30 dark:border-white/10 shadow-xl">
+            <div className="relative w-32 h-32 rounded-full overflow-hidden border border-slate-200 dark:border-white/10 shadow-md">
               <Image
                 src="/kien.png"
                 alt="Kien Dang"
@@ -81,10 +80,8 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
               className="group cursor-pointer inline-flex items-center gap-1.5"
               aria-label="Play pronunciation of Kien"
             >
-              <span className="bg-gradient-to-r from-slate-800 via-blue-700 to-violet-700 dark:from-white dark:via-blue-300 dark:to-violet-400 bg-clip-text text-transparent">
-                Kien Dang
-              </span>
-              <Volume2 className="h-4 w-4 text-amber-400 group-hover:text-amber-300 group-hover:scale-110 transition-all" />
+              <span className="text-slate-900 dark:text-white">Kien Dang</span>
+              <Volume2 className="h-4 w-4 text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 group-hover:scale-110 transition-all" />
             </button>
           </h1>
 
@@ -133,7 +130,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
+                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
                     onClick={() =>
                       document
                         .getElementById("contact")
@@ -148,7 +145,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
                     variant="outline"
                     size="icon"
                     asChild
-                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
+                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
                   >
                     <Link
                       href={link.href}

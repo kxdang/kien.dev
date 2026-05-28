@@ -57,13 +57,13 @@ export default function Experience() {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-600 dark:bg-slate-300" />
             </span>
             <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Currently
             </span>
-            <div className="flex-1 h-px bg-gradient-to-r from-emerald-500/30 via-blue-500/20 to-transparent" />
+            <div className="flex-1 h-px bg-slate-200 dark:bg-slate-800" />
           </div>
 
           <div
@@ -80,9 +80,6 @@ export default function Experience() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="glass rounded-2xl p-6 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 transition-all duration-300 group relative overflow-hidden"
               >
-                {/* subtle gradient accent */}
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
-
                 <div className="flex flex-col mb-2">
                   <div className="flex items-start justify-between gap-2 mb-1">
                     <h3 className="font-bold text-slate-800 dark:text-slate-100">
@@ -109,7 +106,7 @@ export default function Experience() {
       {pastJobs.length > 0 && (
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-violet-500/50 via-blue-500/50 to-transparent hidden md:block" />
+          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-slate-200 dark:bg-slate-800 hidden md:block" />
 
           <div className="space-y-6">
             {pastJobs.map((job, index) => (
@@ -122,7 +119,7 @@ export default function Experience() {
                 className="relative md:pl-12"
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[12px] top-8 w-[15px] h-[15px] rounded-full bg-gradient-to-r from-violet-500 to-blue-500 border-2 border-white dark:border-slate-900 shadow-lg hidden md:block" />
+                <div className="absolute left-[12px] top-8 w-[15px] h-[15px] rounded-full bg-slate-700 dark:bg-slate-300 border-2 border-white dark:border-slate-900 shadow-md hidden md:block" />
 
                 <div className="glass rounded-2xl p-6 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 transition-all duration-300 group">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">

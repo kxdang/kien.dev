@@ -54,18 +54,7 @@ export default function Projects() {
             >
               {/* Image / Stealth header */}
               {project.isStealth ? (
-                <div className="relative h-48 w-full overflow-hidden bg-gradient-to-br from-violet-900 via-blue-900 to-slate-900 dark:from-violet-950 dark:via-blue-950 dark:to-slate-950">
-                  {/* shimmer sweep */}
-                  <motion.div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.06] to-transparent"
-                    animate={{ x: ["-100%", "100%"] }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
+                <div className="relative h-48 w-full overflow-hidden bg-slate-800 dark:bg-slate-900">
                   {/* center icon with breathing pulse */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <motion.div
@@ -98,7 +87,7 @@ export default function Projects() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               )}
 
@@ -126,8 +115,8 @@ export default function Projects() {
                     <div className="flex items-center justify-between text-sm">
                       <span className="inline-flex items-center gap-2 text-slate-500 dark:text-slate-400">
                         <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500" />
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 dark:bg-slate-500 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-600 dark:bg-slate-300" />
                         </span>
                         <span className="font-medium">
                           {project.comingLabel ?? "Coming soon"}
@@ -170,7 +159,7 @@ export default function Projects() {
                       </Button>
                       <Button
                         size="sm"
-                        className="flex items-center gap-1 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white shadow-lg shadow-violet-500/20 transition-all"
+                        className="flex items-center gap-1 bg-slate-900 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-900 shadow-sm transition-colors"
                         onClick={() => {
                           if (project.name === "FuelWise") {
                             setIsFuelWiseModalOpen(true);
@@ -258,7 +247,7 @@ export default function Projects() {
           <DialogFooter>
             <div className="flex flex-col gap-2 w-full">
               <Button
-                className="w-full bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white"
+                className="w-full bg-slate-900 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-900"
                 onClick={() =>
                   window.open("https://fuelwise.app", "_blank")
                 }
