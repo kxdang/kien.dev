@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
-import { skillCards, type SkillCard } from "@/data/portfolio";
+import { skillCards, type SkillCard, type SkillCategory } from "@/data/portfolio";
 
 const iconPaths: Record<string, string> = {
   code: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
@@ -10,15 +11,23 @@ const iconPaths: Record<string, string> = {
   data: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4",
 };
 
+const iconBgColors: Record<string, string> = {
+  code: "bg-blue-600",
+  platform: "bg-violet-600",
+  data: "bg-emerald-600",
+};
+
 function SkillBadge({
   skill,
   theme,
 }: {
-  skill: { name: string; logo: string; invertDark?: boolean };
+  skill: { name: string; logo: string; bgColor: string; invertDark?: boolean };
   theme?: string;
 }) {
   return (
-    <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-100/80 dark:bg-white/5 rounded-lg border border-slate-200/60 dark:border-white/10">
+    <div
+      className={`flex items-center gap-1.5 px-2.5 py-1.5 ${skill.bgColor} rounded-lg border border-white/40 dark:border-white/5 backdrop-blur-sm`}
+    >
       <img
         src={skill.logo}
         alt={skill.name}
@@ -35,6 +44,8 @@ function SkillBadge({
 
 function SkillCardComponent({ card, index }: { card: SkillCard; index: number }) {
   const { theme } = useTheme();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const showContent = card.expandable ? isExpanded : true;
 
   return (
     <motion.div
@@ -44,13 +55,20 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
       className={`glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 ${
-        card.wide ? "md:col-span-2" : ""
+        card.expandable ? "md:col-span-2" : ""
       }`}
     >
-      <div className="flex items-center gap-3 mb-3">
-        <div className="w-10 h-10 min-w-[2.5rem] bg-slate-900 dark:bg-white rounded-xl flex items-center justify-center shadow-sm">
+      <div
+        className={`flex items-center gap-3 mb-3 ${
+          card.expandable ? "cursor-pointer" : ""
+        }`}
+        onClick={card.expandable ? () => setIsExpanded(!isExpanded) : undefined}
+      >
+        <div
+          className={`w-10 h-10 min-w-[2.5rem] ${iconBgColors[card.icon]} rounded-xl flex items-center justify-center shadow-sm`}
+        >
           <svg
-            className="w-5 h-5 text-white dark:text-slate-900"
+            className="w-5 h-5 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -64,29 +82,61 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
           </svg>
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             {card.title}
+            {card.expandable && <span className="text-base">🌱</span>}
           </h3>
         </div>
+        {card.expandable && (
+          <svg
+            className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
+              isExpanded ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        )}
       </div>
       <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
         {card.description}
       </p>
 
-      <div className="space-y-4">
-        {card.categories.map((category) => (
-          <div key={category.title}>
-            <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
-              {category.title}
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
-                <SkillBadge key={skill.name} skill={skill} theme={theme} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      <AnimatePresence>
+        {showContent && (
+          <motion.div
+            initial={card.expandable ? { height: 0, opacity: 0 } : false}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={card.expandable ? { height: 0, opacity: 0 } : undefined}
+            transition={{ duration: 0.3 }}
+            className="space-y-4 overflow-hidden"
+          >
+            {card.categories.map((category) => (
+              <div key={category.title}>
+                <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
+                  {category.title}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <SkillBadge
+                      key={skill.name}
+                      skill={skill}
+                      theme={theme}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

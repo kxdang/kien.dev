@@ -96,7 +96,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
               const audio = new Audio("/kien.mp3");
               audio.play();
             }}
-            className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-violet-600 dark:hover:text-violet-400 transition-colors group cursor-pointer"
             aria-label="Play pronunciation of Kien"
           >
             <span className="text-sm font-medium">\key-in\</span>
@@ -150,7 +150,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
+                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
                   onClick={() =>
                     document
                       .getElementById("contact")
@@ -165,7 +165,7 @@ export default function Hero({ isMounted, onCommandPalette }: HeroProps) {
                   variant="outline"
                   size="icon"
                   asChild
-                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
+                  className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
                 >
                   <Link
                     href={link.href}

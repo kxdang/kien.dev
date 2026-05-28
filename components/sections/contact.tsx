@@ -45,7 +45,7 @@ export default function Contact() {
               id="name"
               name="name"
               required
-              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-slate-500/40 focus:outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
+              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-violet-500/30 focus:outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
               placeholder="Your name"
             />
           </div>
@@ -61,7 +61,7 @@ export default function Contact() {
               id="email"
               name="email"
               required
-              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-slate-500/40 focus:outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
+              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-violet-500/30 focus:outline-none transition-all placeholder:text-slate-400 dark:placeholder:text-slate-500"
               placeholder="you@email.com"
             />
           </div>
@@ -77,7 +77,7 @@ export default function Contact() {
               name="message"
               required
               rows={4}
-              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-slate-500/40 focus:outline-none transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+              className="w-full px-4 py-2.5 rounded-xl glass-input text-black dark:text-white focus:ring-2 focus:ring-violet-500/30 focus:outline-none transition-all resize-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
               placeholder="How can I help you?"
             />
           </div>
@@ -86,7 +86,7 @@ export default function Contact() {
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button
               type="submit"
-              className="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 dark:bg-white dark:hover:bg-slate-200 text-white dark:text-slate-900 shadow-sm transition-colors duration-200 rounded-xl px-6"
+              className="flex items-center gap-2 bg-violet-600 hover:bg-violet-700 text-white shadow-sm transition-colors duration-200 rounded-xl px-6"
             >
               <Mail className="h-4 w-4" />
               <span>Send Message</span>

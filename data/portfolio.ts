@@ -7,6 +7,7 @@ export const getYearsOfExperience = () => {
 export interface Skill {
   name: string;
   logo: string;
+  bgColor: string;
   invertDark?: boolean;
 }
 
@@ -19,8 +20,9 @@ export interface SkillCard {
   title: string;
   description: string;
   icon: "code" | "platform" | "data";
+  gradient: string;
   categories: SkillCategory[];
-  wide?: boolean;
+  expandable?: boolean;
 }
 
 export interface Job {
@@ -51,6 +53,7 @@ export const skillCards: SkillCard[] = [
     description:
       "Building responsive, accessible, and performant user interfaces",
     icon: "code",
+    gradient: "from-cyan-500 to-blue-600",
     categories: [
       {
         title: "Core Technologies",
@@ -58,23 +61,28 @@ export const skillCards: SkillCard[] = [
           {
             name: "TypeScript",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+            bgColor: "bg-blue-100 dark:bg-blue-900/30",
           },
           {
             name: "React",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+            bgColor: "bg-cyan-100 dark:bg-cyan-900/30",
           },
           {
             name: "Next.js",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+            bgColor: "bg-gray-100 dark:bg-gray-800",
             invertDark: true,
           },
           {
             name: "JavaScript",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
           },
           {
             name: "Node.js",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+            bgColor: "bg-green-100 dark:bg-green-900/30",
           },
         ],
       },
@@ -84,22 +92,27 @@ export const skillCards: SkillCard[] = [
           {
             name: "Redux",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
+            bgColor: "bg-purple-100 dark:bg-purple-900/30",
           },
           {
             name: "Zustand",
             logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='70'%3E🐻%3C/text%3E%3C/svg%3E",
+            bgColor: "bg-amber-100 dark:bg-amber-900/30",
           },
           {
             name: "GraphQL",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+            bgColor: "bg-pink-100 dark:bg-pink-900/30",
           },
           {
             name: "Tailwind",
             logo: "https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg",
+            bgColor: "bg-teal-100 dark:bg-teal-900/30",
           },
           {
             name: "Apollo",
             logo: "https://www.vectorlogo.zone/logos/apollographql/apollographql-icon.svg",
+            bgColor: "bg-purple-100 dark:bg-purple-900/30",
           },
         ],
       },
@@ -109,6 +122,7 @@ export const skillCards: SkillCard[] = [
           {
             name: "Figma",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+            bgColor: "bg-purple-100 dark:bg-purple-900/30",
           },
         ],
       },
@@ -119,6 +133,7 @@ export const skillCards: SkillCard[] = [
     description:
       "Building tools, improving DX, and ensuring system reliability",
     icon: "platform",
+    gradient: "from-violet-500 to-fuchsia-600",
     categories: [
       {
         title: "CI/CD & Build Tools",
@@ -126,14 +141,17 @@ export const skillCards: SkillCard[] = [
           {
             name: "CircleCI",
             logo: "https://www.vectorlogo.zone/logos/circleci/circleci-icon.svg",
+            bgColor: "bg-gray-100 dark:bg-gray-900/30",
           },
           {
             name: "Vite",
             logo: "https://vitejs.dev/logo.svg",
+            bgColor: "bg-purple-100 dark:bg-purple-900/30",
           },
           {
             name: "Docker",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+            bgColor: "bg-sky-100 dark:bg-sky-900/30",
           },
         ],
       },
@@ -143,14 +161,17 @@ export const skillCards: SkillCard[] = [
           {
             name: "Datadog",
             logo: "https://www.vectorlogo.zone/logos/datadoghq/datadoghq-icon.svg",
+            bgColor: "bg-purple-100 dark:bg-purple-900/30",
           },
           {
             name: "Bugsnag",
             logo: "https://www.vectorlogo.zone/logos/bugsnag/bugsnag-icon.svg",
+            bgColor: "bg-blue-100 dark:bg-blue-900/30",
           },
           {
             name: "PostHog",
             logo: "https://posthog.com/brand/posthog-logomark.svg",
+            bgColor: "bg-orange-100 dark:bg-orange-900/30",
           },
         ],
       },
@@ -160,14 +181,17 @@ export const skillCards: SkillCard[] = [
           {
             name: "RTL",
             logo: "https://testing-library.com/img/octopus-128x128.png",
+            bgColor: "bg-red-100 dark:bg-red-900/30",
           },
           {
             name: "Playwright",
             logo: "https://playwright.dev/img/playwright-logo.svg",
+            bgColor: "bg-green-100 dark:bg-green-900/30",
           },
           {
             name: "Happo",
             logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='70' font-size='60'%3E📸%3C/text%3E%3C/svg%3E",
+            bgColor: "bg-indigo-100 dark:bg-indigo-900/30",
           },
         ],
       },
@@ -177,10 +201,12 @@ export const skillCards: SkillCard[] = [
           {
             name: "Git",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+            bgColor: "bg-orange-100 dark:bg-orange-900/30",
           },
           {
             name: "GitHub",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+            bgColor: "bg-gray-100 dark:bg-gray-800",
             invertDark: true,
           },
         ],
@@ -192,7 +218,7 @@ export const skillCards: SkillCard[] = [
     description:
       "Building analytics pipelines and modern data platforms for healthcare transformation",
     icon: "data",
-    wide: true,
+    gradient: "from-emerald-400 to-cyan-600",
     categories: [
       {
         title: "Data Platforms & Tools",
@@ -200,18 +226,22 @@ export const skillCards: SkillCard[] = [
           {
             name: "Microsoft Fabric",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+            bgColor: "bg-blue-100 dark:bg-blue-900/30",
           },
           {
             name: "Power BI",
             logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F2C811' d='M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z'/%3E%3C/svg%3E",
+            bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
           },
           {
             name: "SQL Server",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+            bgColor: "bg-red-100 dark:bg-red-900/30",
           },
           {
             name: "Python (PySpark)",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            bgColor: "bg-blue-100 dark:bg-blue-900/30",
           },
         ],
       },
@@ -221,10 +251,12 @@ export const skillCards: SkillCard[] = [
           {
             name: "MEDITECH Expanse",
             logo: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2310B981' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E",
+            bgColor: "bg-emerald-100 dark:bg-emerald-900/30",
           },
           {
             name: "Azure DevOps",
             logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+            bgColor: "bg-blue-100 dark:bg-blue-900/30",
           },
         ],
       },

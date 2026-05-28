@@ -36,7 +36,7 @@ export default function Portfolio() {
       {/* Progress bar */}
       <div className="fixed top-0 left-0 w-full h-[2px] bg-transparent z-50">
         <motion.div
-          className="h-full bg-slate-800 dark:bg-slate-200"
+          className="h-full bg-violet-600"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -64,7 +64,7 @@ export default function Portfolio() {
             &copy; {new Date().getFullYear()}{" "}
             <Link
               href="https://kiendang.ca"
-              className="hover:text-slate-900 dark:hover:text-white transition-colors"
+              className="hover:text-violet-500 transition-colors"
             >
               Kien Dang.
             </Link>{" "}

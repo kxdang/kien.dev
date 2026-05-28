@@ -29,10 +29,10 @@ export default function About() {
             that wasn&apos;t possible a few years ago.
           </p>
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-            That speed has carried me from frontend into data engineering and
-            broader full-stack work, reasoning about trade-offs across the
-            stack. The space I&apos;m drawn to is bridging older systems with
-            modern AI tooling, where there&apos;s still real friction worth
+            That speed has meant growing from frontend into data engineering and
+            broader full-stack work, learning to reason about trade-offs across
+            the stack. The space I&apos;m drawn to is bridging older systems
+            with modern AI tooling, where there&apos;s still real friction worth
             untangling.
           </p>
         </div>

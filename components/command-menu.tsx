@@ -71,35 +71,35 @@ export default function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
             >
               <Command.Item
                 onSelect={() => navigate("about")}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <User className="h-4 w-4" />
                 About
               </Command.Item>
               <Command.Item
                 onSelect={() => navigate("skills")}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <Code2 className="h-4 w-4" />
                 Skills
               </Command.Item>
               <Command.Item
                 onSelect={() => navigate("experience")}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <Briefcase className="h-4 w-4" />
                 Experience
               </Command.Item>
               <Command.Item
                 onSelect={() => navigate("projects")}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <FolderOpen className="h-4 w-4" />
                 Projects
               </Command.Item>
               <Command.Item
                 onSelect={() => navigate("contact")}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <Mail className="h-4 w-4" />
                 Contact
@@ -117,7 +117,7 @@ export default function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                   onOpenChange(false);
                   window.open("https://github.com/kxdang", "_blank");
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <Github className="h-4 w-4" />
                 GitHub
@@ -130,7 +130,7 @@ export default function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                     "_blank"
                   );
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
@@ -140,7 +140,7 @@ export default function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                   onOpenChange(false);
                   window.open("https://kiendang.me", "_blank");
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 <PenTool className="h-4 w-4" />
                 Blog
@@ -158,7 +158,7 @@ export default function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
                   setTheme(theme === "dark" ? "light" : "dark");
                   onOpenChange(false);
                 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-slate-900/10 dark:data-[selected=true]:bg-white/10 data-[selected=true]:text-slate-900 dark:data-[selected=true]:text-white transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer text-slate-600 dark:text-slate-300 data-[selected=true]:bg-violet-500/10 data-[selected=true]:text-violet-600 dark:data-[selected=true]:text-violet-400 transition-colors"
               >
                 {theme === "dark" ? (
                   <Sun className="h-4 w-4" />

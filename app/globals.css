@@ -103,11 +103,7 @@ body {
     width: 48px;
     height: 3px;
     border-radius: 999px;
-    background: #334155;
-  }
-
-  .dark .section-heading::after {
-    background: #cbd5e1;
+    background: #8b5cf6;
   }
 }
 
@@ -194,17 +190,17 @@ body {
 
 /* ─── Background ─── */
 body {
-  background-color: #fafafa;
+  background-color: #f0eef6;
   min-height: 100vh;
 }
 
 .dark body {
-  background-color: #0a0a0a;
+  background-color: #0a0e1a;
 }
 
 /* ─── Focus states ─── */
 *:focus-visible {
-  outline: 2px solid rgba(100, 116, 139, 0.6);
+  outline: 2px solid rgba(139, 92, 246, 0.5);
   outline-offset: 2px;
 }
 

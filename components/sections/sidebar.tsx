@@ -81,7 +81,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
               aria-label="Play pronunciation of Kien"
             >
               <span className="text-slate-900 dark:text-white">Kien Dang</span>
-              <Volume2 className="h-4 w-4 text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200 group-hover:scale-110 transition-all" />
+              <Volume2 className="h-4 w-4 text-amber-400 group-hover:text-amber-300 group-hover:scale-110 transition-all" />
             </button>
           </h1>
 
@@ -130,7 +130,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
+                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
                     onClick={() =>
                       document
                         .getElementById("contact")
@@ -145,7 +145,7 @@ export default function Sidebar({ isMounted, onCommandPalette }: SidebarProps) {
                     variant="outline"
                     size="icon"
                     asChild
-                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-black/10 transition-shadow"
+                    className="rounded-full glass-subtle border-0 hover:shadow-lg hover:shadow-violet-500/10 transition-shadow"
                   >
                     <Link
                       href={link.href}
