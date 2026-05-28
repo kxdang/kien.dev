@@ -22,7 +22,6 @@ export interface SkillCard {
   icon: "code" | "platform" | "data";
   gradient: string;
   categories: SkillCategory[];
-  expandable?: boolean;
 }
 
 export interface Job {
@@ -216,10 +215,9 @@ export const skillCards: SkillCard[] = [
   {
     title: "Data Engineering",
     description:
-      "Building data engineering and analytics skills for healthcare transformation",
+      "Building analytics pipelines and modern data platforms for healthcare transformation",
     icon: "data",
     gradient: "from-emerald-400 to-cyan-600",
-    expandable: true,
     categories: [
       {
         title: "Data Platforms & Tools",
@@ -273,17 +271,17 @@ export const jobs: Job[] = [
     url: "https://cgmh.on.ca",
     logoUrl: "https://cgmh.on.ca/images/layout/logo.png",
     description:
-      "Building expertise in data engineering and Microsoft Fabric while supporting the transformation of healthcare data from multiple sources (EMR, MOH, CIHI) into unified analytics platforms that drive better patient outcomes.",
+      "Engineering the transformation of healthcare data from multiple sources (EMR, MOH, CIHI) into unified analytics platforms on Microsoft Fabric, supporting better patient outcomes.",
   },
   {
     role: "Software Developer",
     company: "Penn Entertainment",
-    period: "2025 – Present",
+    period: "2025 – 2026",
     url: "https://www.pennentertainment.com/",
     logoUrl:
       "https://cdn.brandfetch.io/idVwEt7uTD/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1748340049391",
     description:
-      "Transitioned to Penn Entertainment as part of theScore's migration under the Penn umbrella. Currently on the Sportsbook Experience team, contributing to ESPN BET's web platform. Focused on UI/UX enhancements, performance tuning, and feature delivery across espnbet.com.",
+      "Joined Penn Entertainment via theScore's migration under the Penn umbrella, on the Sportsbook Experience team contributing to ESPN BET's web platform. Worked on UI/UX enhancements, performance tuning, and feature delivery across espnbet.com.",
   },
   {
     role: "Software Developer",

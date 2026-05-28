@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useTheme } from "next-themes";
-import { skillCards, type SkillCard, type SkillCategory } from "@/data/portfolio";
+import { skillCards, type SkillCard } from "@/data/portfolio";
 
 const iconPaths: Record<string, string> = {
   code: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
@@ -45,8 +44,6 @@ function SkillBadge({
 
 function SkillCardComponent({ card, index }: { card: SkillCard; index: number }) {
   const { theme } = useTheme();
-  const [isExpanded, setIsExpanded] = useState(false);
-  const showContent = card.expandable ? isExpanded : true;
 
   return (
     <motion.div
@@ -55,16 +52,9 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -4 }}
-      className={`glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20 ${
-        card.expandable ? "md:col-span-2" : ""
-      }`}
+      className="glass rounded-2xl p-6 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/20"
     >
-      <div
-        className={`flex items-center gap-3 mb-3 ${
-          card.expandable ? "cursor-pointer" : ""
-        }`}
-        onClick={card.expandable ? () => setIsExpanded(!isExpanded) : undefined}
-      >
+      <div className="flex items-center gap-3 mb-3">
         <div
           className={`w-10 h-10 min-w-[2.5rem] bg-gradient-to-br ${iconGradients[card.icon]} rounded-xl flex items-center justify-center shadow-lg ring-1 ring-white/10`}
         >
@@ -83,61 +73,29 @@ function SkillCardComponent({ card, index }: { card: SkillCard; index: number })
           </svg>
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">
             {card.title}
-            {card.expandable && <span className="text-base">🌱</span>}
           </h3>
         </div>
-        {card.expandable && (
-          <svg
-            className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${
-              isExpanded ? "rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        )}
       </div>
       <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
         {card.description}
       </p>
 
-      <AnimatePresence>
-        {showContent && (
-          <motion.div
-            initial={card.expandable ? { height: 0, opacity: 0 } : false}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={card.expandable ? { height: 0, opacity: 0 } : undefined}
-            transition={{ duration: 0.3 }}
-            className="space-y-4 overflow-hidden"
-          >
-            {card.categories.map((category) => (
-              <div key={category.title}>
-                <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
-                  {category.title}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <SkillBadge
-                      key={skill.name}
-                      skill={skill}
-                      theme={theme}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="space-y-4">
+        {card.categories.map((category) => (
+          <div key={category.title}>
+            <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 mb-2 uppercase tracking-wider">
+              {category.title}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <SkillBadge key={skill.name} skill={skill} theme={theme} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </motion.div>
   );
 }

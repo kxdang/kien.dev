@@ -12,15 +12,16 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Kien Dang | Software Developer | React, Next.js, TypeScript",
   description:
-    "Kien Dang is a Software Developer in Toronto specializing in React, Next.js, and TypeScript. Currently building web experiences at Penn Entertainment. View portfolio, projects, and blog.",
+    "Kien Dang is a Software Developer in Toronto specializing in React, Next.js, TypeScript, and data engineering on Microsoft Fabric. View portfolio, projects, and blog.",
   keywords: [
     "Kien Dang",
     "Software Developer",
     "Frontend Developer",
     "React Developer",
     "Next.js Developer",
+    "Data Engineer",
+    "Microsoft Fabric",
     "Toronto Developer",
-    "Penn Entertainment",
     "theScore",
     "Coveo",
     "TypeScript",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Kien Dang Portfolio",
     title: "Kien Dang - Software Developer",
     description:
-      "Software Developer in Toronto specializing in React, Next.js, and modern web technologies. Currently at Penn Entertainment.",
+      "Software Developer in Toronto specializing in React, Next.js, and modern web technologies, with growing data engineering work on Microsoft Fabric.",
     images: [
       {
         url: "/og-image.png",
@@ -100,10 +101,6 @@ export default function RootLayout({
       "https://kiendang.ca",
     ],
     jobTitle: "Software Developer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Penn Entertainment",
-    },
     alumniOf: {
       "@type": "CollegeOrUniversity",
       name: "University of Waterloo",
@@ -115,7 +112,7 @@ export default function RootLayout({
       addressCountry: "Canada",
     },
     description:
-      "Software Developer specializing in React, Next.js, and TypeScript. Building web experiences at Penn Entertainment.",
+      "Software Developer specializing in React, Next.js, and TypeScript, with growing data engineering work on Microsoft Fabric.",
     knowsAbout: [
       "React",
       "Next.js",
@@ -124,6 +121,9 @@ export default function RootLayout({
       "Frontend Development",
       "Web Development",
       "Software Engineering",
+      "Data Engineering",
+      "Microsoft Fabric",
+      "Power BI",
     ],
   };
 
