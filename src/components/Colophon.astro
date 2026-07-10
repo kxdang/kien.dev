@@ -1,0 +1,41 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mono">
+  <p>
+    © {year} <a href="https://kien.dev">Kien Dang</a> · notebook kept in the
+    open
+  </p>
+  <p class="detail">
+    set in Newsreader &amp; IBM Plex Mono · built with Astro · ~0 kB of
+    JavaScript shipped, save a theme toggle and one audio clip
+  </p>
+</footer>
+
+<style>
+  footer {
+    padding: 2.5rem 0 3rem;
+    border-top: 2px solid var(--ink);
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  footer a {
+    color: var(--ink-soft);
+  }
+
+  .detail {
+    text-align: right;
+    max-width: 26rem;
+  }
+
+  @media (max-width: 640px) {
+    .detail {
+      text-align: left;
+    }
+  }
+</style>

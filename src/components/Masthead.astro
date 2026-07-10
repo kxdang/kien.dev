@@ -1,0 +1,317 @@
+---
+---
+
+<header>
+  <div class="topbar mono">
+    <span>Kien Dang · lab notebook, vol. 2</span>
+    <button id="theme-toggle" class="mono" aria-label="Toggle dark mode">
+      <span class="when-light">◑ dark</span>
+      <span class="when-dark">◐ light</span>
+    </button>
+  </div>
+
+  <div class="masthead">
+    <div class="intro">
+      <h1 class="rise" style="--d: 0s">
+        Kien Dang
+        <button id="pronounce" class="mono" aria-label="Play pronunciation of Kien" title="Hear it">
+          [ ˈkiːən ]<span class="spk" aria-hidden="true">▸</span>
+        </button>
+      </h1>
+      <p class="tagline rise" style="--d: 0.08s">
+        Software engineer, <em>biochemist on paper</em>. From undergrad wet
+        labs to web platforms to hospital data, catalyzed by coffee and
+        curiosity.
+      </p>
+      <p class="meta mono rise" style="--d: 0.16s">
+        Toronto, Canada · est. 2018 · currently: frontend&nbsp;→&nbsp;data
+      </p>
+      <nav class="links mono rise" style="--d: 0.24s" aria-label="Profiles">
+        <a href="https://github.com/kxdang" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/kien-dang/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://kiendang.me" target="_blank" rel="noopener">Blog</a>
+        <a href="#correspondence">Email</a>
+      </nav>
+      <p class="toc mono rise" style="--d: 0.32s">
+        contents&nbsp; 01&nbsp;<a href="#abstract">abstract</a> ·
+        02&nbsp;<a href="#methods">materials&nbsp;&amp;&nbsp;methods</a> ·
+        03&nbsp;<a href="#pathway">reaction&nbsp;pathway</a> ·
+        A&nbsp;<a href="#appendix">appendix</a> ·
+        04&nbsp;<a href="#correspondence">correspondence</a>
+      </p>
+    </div>
+
+    <figure class="figures rise" style="--d: 0.2s">
+      <div class="photo">
+        <img src="/kien.png" alt="Kien Dang" width="152" height="152" />
+      </div>
+      <figcaption class="mono">fig. 0 — subject, caffeinated</figcaption>
+      <svg
+        class="molecule"
+        viewBox="0 0 168 118"
+        width="150"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.3"
+      >
+        <!-- caffeine, skeletal -->
+        <g>
+          <!-- six-membered ring -->
+          <path d="M55 25 L30 40 L30 70 L55 85 L80 70 L80 40 Z" />
+          <!-- C4=C5 inner double bond -->
+          <path d="M76 44 L76 66" />
+          <!-- carbonyls -->
+          <path d="M53 23 L53 6 M57 23 L57 6" />
+          <path d="M29 72 L15 82 M27 68 L13 78" />
+          <!-- N-methyls -->
+          <path d="M30 40 L10 28" />
+          <path d="M55 85 L55 104" />
+          <!-- five-membered ring -->
+          <path d="M80 40 L106 32 L122 55 L106 78 L80 70" />
+          <!-- C8=N9 double bond -->
+          <path d="M124 59 L110 79" />
+          <!-- N7 methyl -->
+          <path d="M106 32 L118 14" />
+        </g>
+        <g
+          class="atoms"
+          style="font-family: var(--font-mono)"
+          font-size="10"
+          stroke="var(--paper)"
+          stroke-width="5"
+          paint-order="stroke"
+          fill="currentColor"
+          text-anchor="middle"
+        >
+          <text x="30" y="44">N</text>
+          <text x="55" y="89">N</text>
+          <text x="106" y="36">N</text>
+          <text x="106" y="82">N</text>
+          <text x="55" y="9">O</text>
+          <text x="12" y="84">O</text>
+        </g>
+      </svg>
+      <figcaption class="mono faint">
+        C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub> · primary catalyst
+      </figcaption>
+    </figure>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--ink);
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  #theme-toggle {
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 0.2rem 0.55rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  #theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .when-dark {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .when-light {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .when-dark {
+    display: inline;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(2rem, 5vw, 3rem);
+  }
+
+  .intro {
+    max-width: 34rem;
+  }
+
+  h1 {
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  #pronounce {
+    background: none;
+    border: none;
+    color: var(--ink-faint);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s ease;
+  }
+
+  #pronounce:hover {
+    color: var(--accent);
+  }
+
+  .spk {
+    margin-left: 0.3em;
+  }
+
+  .tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--ink-soft);
+    margin-top: 1.1rem;
+    text-wrap: balance;
+  }
+
+  .tagline em {
+    color: var(--accent);
+  }
+
+  .meta {
+    margin-top: 1.4rem;
+    color: var(--ink-faint);
+  }
+
+  .links {
+    display: flex;
+    gap: 1.4rem;
+    margin-top: 0.9rem;
+  }
+
+  .links a {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+  }
+
+  .links a:hover {
+    border-color: var(--accent);
+  }
+
+  .toc {
+    margin-top: 2.2rem;
+    color: var(--ink-faint);
+    line-height: 2;
+  }
+
+  .toc a {
+    color: var(--ink-soft);
+  }
+
+  /* figures column */
+  .figures {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .photo {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 0.4rem;
+    box-shadow: 4px 4px 0 var(--line-soft);
+    transform: rotate(1.2deg);
+    transition: transform 0.25s ease;
+  }
+
+  .photo:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+
+  .photo img {
+    display: block;
+    filter: saturate(0.85) contrast(1.02);
+  }
+
+  figcaption {
+    color: var(--ink-soft);
+  }
+
+  .faint {
+    color: var(--ink-faint);
+  }
+
+  .molecule {
+    margin-top: 1.2rem;
+    color: var(--ink-soft);
+    opacity: 0.9;
+  }
+
+  @media (max-width: 720px) {
+    .masthead {
+      flex-direction: column-reverse;
+    }
+    .figures {
+      flex-direction: row;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      text-align: left;
+      gap: 1rem;
+    }
+    .molecule {
+      margin-top: 0;
+    }
+  }
+
+  /* load-in */
+  @keyframes riseIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  :global(html.js) .rise {
+    animation: riseIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById("theme-toggle");
+  toggle?.addEventListener("click", () => {
+    const root = document.documentElement;
+    if (root.dataset.theme === "dark") {
+      delete root.dataset.theme;
+      localStorage.setItem("theme", "light");
+    } else {
+      root.dataset.theme = "dark";
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+  const pronounce = document.getElementById("pronounce");
+  pronounce?.addEventListener("click", () => {
+    new Audio("/kien.mp3").play();
+  });
+</script>

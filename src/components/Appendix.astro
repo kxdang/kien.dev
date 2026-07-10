@@ -1,0 +1,107 @@
+---
+import { appendix } from "../data/portfolio";
+---
+
+<section id="appendix" class="reveal">
+  <span class="sec-num" aria-hidden="true">A</span>
+  <div class="sec-head">
+    <span class="kicker">Appendix</span>
+    <h2>Side experiments</h2>
+    <p class="fig">selected personal work · full record on <a href="https://github.com/kxdang" target="_blank" rel="noopener">GitHub</a></p>
+  </div>
+
+  <ul class="items" role="list">
+    {
+      appendix.map((item) => (
+        <li class:list={["item", { redacted: item.redacted }]}>
+          <span class="idx mono">{item.index}</span>
+          <div>
+            <p class="name">
+              {item.redacted ? (
+                <span class="redaction" title="Coming soon">{item.name}</span>
+              ) : (
+                item.name
+              )}
+              {item.href && (
+                <a class="mono link" href={item.href} target="_blank" rel="noopener">
+                  {item.linkLabel} ↗
+                </a>
+              )}
+              {item.extraHref && (
+                <a class="mono link" href={item.extraHref} target="_blank" rel="noopener">
+                  {item.extraLabel} ↗
+                </a>
+              )}
+            </p>
+            <p class="desc">{item.desc}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .items {
+    list-style: none;
+    padding: 0;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 0.5rem;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .item:first-child {
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .idx {
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 0.2rem;
+  }
+
+  .name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .link {
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+  }
+
+  .link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .desc {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin-top: 0.2rem;
+  }
+
+  .redaction {
+    background: var(--ink);
+    color: var(--ink);
+    padding: 0 0.5rem;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .redaction:hover {
+    color: var(--paper);
+  }
+</style>
