@@ -310,7 +310,13 @@
   });
 
   const pronounce = document.getElementById("pronounce");
+  let cooldown = false;
   pronounce?.addEventListener("click", () => {
+    if (cooldown) return;
+    cooldown = true;
     new Audio("/kien.mp3").play();
+    setTimeout(() => {
+      cooldown = false;
+    }, 2000);
   });
 </script>
