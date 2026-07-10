@@ -102,7 +102,7 @@ export const pathway: Step[] = [
     role: "Software Developer",
     org: "Penn Entertainment",
     url: "https://www.pennentertainment.com/",
-    desc: "Joined via theScore's migration under the Penn umbrella. On the Sportsbook Experience team for ESPN BET's web platform: UI/UX enhancements, performance tuning, and feature delivery across espnbet.com.",
+    desc: "Joined via theScore's migration under the Penn umbrella. On the Sportsbook Experience team for ESPN BET's web platform (since rebranded theScore Bet): UI revamps, performance tuning, and feature delivery across the sportsbook web app.",
   },
   {
     period: "2025 – present",

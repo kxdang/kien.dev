@@ -125,9 +125,10 @@ const numbered = methods.map((m) => ({
     width: 30px;
     height: 30px;
     object-fit: contain;
-    /* ink stamp at rest, brand color on hover */
+    /* ink stamp at rest, brand color on hover; color lingers on the way
+       out so sweeping the grid leaves a slowly dimming trail */
     filter: grayscale(1) sepia(0.22) contrast(0.95) opacity(0.82);
-    transition: filter 0.22s ease, transform 0.18s ease;
+    transition: filter 2.4s ease 0.5s, transform 0.18s ease;
   }
 
   .glyph {
@@ -139,6 +140,7 @@ const numbered = methods.map((m) => ({
   .tile:hover .glyph {
     filter: none;
     transform: scale(1.08);
+    transition: filter 0.12s ease, transform 0.18s ease;
   }
 
   :global([data-theme="dark"]) .tile img {
