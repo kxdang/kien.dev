@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import kien from "../assets/kien.png";
 ---
 
 <header>
@@ -42,7 +44,15 @@
 
     <figure class="figures rise" style="--d: 0.2s">
       <div class="photo">
-        <img src="/kien.png" alt="Kien Dang" width="152" height="152" />
+        <Image
+          src={kien}
+          alt="Kien Dang"
+          width={152}
+          height={152}
+          densities={[1, 2]}
+          format="webp"
+          quality={82}
+        />
       </div>
       <figcaption class="mono">fig. 0 — subject</figcaption>
       <svg
