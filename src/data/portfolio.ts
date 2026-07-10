@@ -83,11 +83,6 @@ export const pathway: Step[] = [
     precursor: true,
   },
   {
-    role: "Costing analyst",
-    desc: "Started automating Excel reports with VBA and noticed the automation was the interesting part.",
-    precursor: true,
-  },
-  {
     period: "2020 – 2023",
     role: "Software Developer",
     org: "Coveo",
