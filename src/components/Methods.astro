@@ -1,0 +1,161 @@
+---
+import { methods } from "../data/portfolio";
+
+let n = 0;
+const numbered = methods.map((m) => ({
+  ...m,
+  specimens: m.specimens.map((s) => ({ ...s, idx: String(++n).padStart(2, "0") })),
+}));
+---
+
+<section id="methods" class="reveal">
+  <span class="sec-num" aria-hidden="true">02</span>
+  <div class="sec-head">
+    <span class="kicker">Materials &amp; Methods</span>
+    <h2>Specimens, catalogued by discipline</h2>
+    <p class="fig">fig. 2 — tools in active use, ordered by acquisition</p>
+  </div>
+
+  {
+    numbered.map((m) => (
+      <div class="method reveal">
+        <div class="method-head">
+          <span class="mono num">{m.num}</span>
+          <h3>{m.title}</h3>
+          <p class="note">{m.note}</p>
+        </div>
+        <ul class="tiles" role="list">
+          {m.specimens.map((s) => (
+            <li class="tile">
+              <span class="idx mono" aria-hidden="true">
+                {s.idx}
+              </span>
+              {s.logo ? (
+                <img
+                  src={`/logos/${s.logo}`}
+                  alt=""
+                  width="30"
+                  height="30"
+                  loading="lazy"
+                  class:list={{ invert: s.invertDark }}
+                />
+              ) : (
+                <span class="glyph" aria-hidden="true">
+                  {s.emoji}
+                </span>
+              )}
+              <span class="name mono">{s.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  .method {
+    margin-top: 2.5rem;
+  }
+
+  .method-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-items: baseline;
+    margin-bottom: 1.1rem;
+  }
+
+  .num {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .note {
+    grid-column: 2;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .tiles {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .tile {
+    position: relative;
+    aspect-ratio: 1;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    padding: 0.55rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .tile:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 3px 3px 0 var(--accent-soft);
+  }
+
+  .idx {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.55rem;
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+  }
+
+  .tile img,
+  .glyph {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: saturate(0.9);
+    transition: filter 0.18s ease, transform 0.18s ease;
+  }
+
+  .glyph {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .tile:hover img,
+  .tile:hover .glyph {
+    filter: saturate(1.1);
+    transform: scale(1.08);
+  }
+
+  :global([data-theme="dark"]) .tile img.invert {
+    filter: invert(1) hue-rotate(180deg) saturate(0.9);
+  }
+
+  :global([data-theme="dark"]) .tile:hover img.invert {
+    filter: invert(1) hue-rotate(180deg) saturate(1.1);
+  }
+
+  .name {
+    font-size: 0.6rem;
+    color: var(--ink-soft);
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+import { pathway } from "../data/portfolio";
+---
+
+<section id="pathway" class="reveal">
+  <span class="sec-num" aria-hidden="true">03</span>
+  <div class="sec-head">
+    <span class="kicker">Reaction Pathway</span>
+    <h2>Biochemistry&nbsp;→ software&nbsp;→ data</h2>
+    <p class="fig">fig. 3 — read top to bottom, substrate to product</p>
+  </div>
+
+  <ol class="steps" role="list">
+    {
+      pathway.map((step) => (
+        <li class:list={["step", "reveal", { precursor: step.precursor, current: step.current }]}>
+          {step.transition && (
+            <p class="transition mono" aria-label="Career transition">
+              <span class="arrow" aria-hidden="true">⇣</span> {step.transition}
+            </p>
+          )}
+          <span class="marker" aria-hidden="true" />
+          <div class="entry">
+            {(step.period || step.current) && (
+              <p class="period mono">
+                {step.period}
+                {step.current && <span class="live">— in progress</span>}
+              </p>
+            )}
+            <h3>
+              {step.role}
+              {step.org && (
+                <>
+                  {" · "}
+                  {step.url ? (
+                    <a href={step.url} target="_blank" rel="noopener">
+                      {step.org}
+                    </a>
+                  ) : (
+                    step.org
+                  )}
+                </>
+              )}
+            </h3>
+            <p class="desc">{step.desc}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  /* marker sits on the page's red margin rule */
+  .marker {
+    position: absolute;
+    left: calc(-1 * clamp(1.75rem, 5vw, 3.25rem));
+    top: 0.5rem;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--ink-soft);
+  }
+
+  .transition {
+    color: var(--ink-faint);
+    margin-bottom: 2.2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .arrow {
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+
+  .period {
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .live {
+    color: var(--accent);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+  }
+
+  h3 a {
+    font-style: italic;
+  }
+
+  .desc {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    max-width: 36rem;
+    margin-top: 0.4rem;
+  }
+
+  .precursor .entry {
+    opacity: 0.66;
+  }
+
+  .precursor .marker {
+    border-style: dashed;
+  }
+
+  .current .marker {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .current .marker::after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    animation: ping 2.2s ease-out infinite;
+  }
+
+  @keyframes ping {
+    0% {
+      transform: scale(0.6);
+      opacity: 0.9;
+    }
+    80%,
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .current .marker::after {
+      animation: none;
+      opacity: 0.4;
+    }
+  }
+</style>
